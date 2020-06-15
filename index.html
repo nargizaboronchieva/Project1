@@ -12,30 +12,7 @@
 </head>
 <body>
 
-    <!-- HOME PAGE -->
-    
-    <!-- <div id="sideNav">
-        <input class="sideNav" id="home" type="image" src="icons/home.png"/>
-        <input class="sideNav" id="food" type="image" src="icons/food.png"/>
-        <input class="sideNav" id="drink" type="image" src="icons/drink.png"/>
-        <input class="sideNav" id="user" type="image" src="icons/user.png"/>
-    </div> -->
-
-    <!--CENTER-->
-        <!--Header-->    
-        <!--Container with 2 rows; rows each contain 2 col (img/food; food/img + buttons-->
-
-    <!--RIGHT-->
-        <!--Container with 6 glass buttons-->
-        <!--Header-->
-        <!--optional dropdown with more options-->
-
-    <!--FOOD/DRINK Screen1 *** NICO EDIT 2020 06 15: VERY ROUGH SKELETON-->  
-        <!--Header-->
-
-        <!--Subtext-->
-        <!--For 1: Search favorite meal; with text input & submit button-->
-        <!--For 2: Search ingredient; with text, dropdown number & submit button-->
+    <!-- HOME PAGE *** NICO EDIT 2020 06 15: VERY ROUGH SKELETON *** MACK EDIT INPUT OF PAGE ELEMENTS-->  
         <div class="ui stackable grid">
             <div class="one column row">
                 <div class="column" style="border: 1px solid black;">
@@ -47,16 +24,16 @@
                 <div class="two wide column" style="border: 1px solid black;">
                     <div class="ui vertical fluid tabular menu">
                         <a class="active item">
-                          Home Icon
+                            <input class="navItem" id="home" type="image" src="icons/home.png"/>
                         </a>
                         <a class="item">
-                          Food Icon
+                            <input class="navItem" id="food" type="image" src="icons/food.png"/>
                         </a>
                         <a class="item">
-                          Drink Icon
+                            <input class="navItem" id="drink" type="image" src="icons/drink.png"/>
                         </a>
                         <a class="item">
-                          User Icon
+                            <input class="navItem" id="user" type="image" src="icons/user.png"/>
                         </a>
                       </div>
                     <!--PLAIN COLUMN NAV OPTION-->  
@@ -66,16 +43,40 @@
                     <div class="column" style="border: 1px solid black;">nav icon</div> -->
                 </div>
                 <div class="seven wide column" style="border: 1px solid black;">
-                    <div class="column" style="border: 1px solid black;">a</div>
-                    <div class="column" style="border: 1px solid black;">b</div>
-                    <div class="column" style="border: 1px solid black;">c</div>
-                    <div class="column" style="border: 1px solid black;">d</div>
+                    <div class="column" style="border: 1px solid black;">
+                        <h2 class="centerItem">Your next dinner party<br>at the touch of a button.</h2>
+                        <h3 class="centerItem">Find the perfect recipes for your<br>favorite meals and cocktails.</h3>
+                    </div>
+                    <div class="column" style="border: 1px solid black;">
+                        <img>
+                        <button></button>
+                    </div>
+                    <div class="column" style="border: 1px solid black;">
+                        <img>
+                        <button></button>
+                    </div>
                 </div>
                 <div class="seven wide column row" style="border: 1px solid black;">
-                    <div class="column" style="border: 1px solid black;">e</div>
-                    <div class="column" style="border: 1px solid black;">f</div>
-                    <div class="column" style="border: 1px solid black;">g</div>
-                    <div class="column" style="border: 1px solid black;">h</div>
+                    <div class="column" style="border: 1px solid black;">
+                        <div class="glassContainer">
+                            <input class="glassItem" id="collins" type="image" src="icons/collins.png"/>
+                            <input class="glassItem" id="martini" type="image" src="icons/martini.png"/>
+                            <input class="glassItem" id="oldfashion" type="image" src="icons/oldfashion.png"/>
+                            <input class="glassItem" id="shots" type="image" src="icons/shots.png"/>
+                            <input class="glassItem" id="masonjar" type="image" src="icons/masonjar.png"/>
+                            <input class="glassItem" id="margarita" type="image" src="icons/margarita.png"/>
+                        </div>
+                    </div>
+                    <div class="column" style="border: 1px solid black;">
+                        <h2>What are you in the mood for?</h2>
+                        <h3>Pick your glass and we’ll do the rest!</h3>
+                    </div>
+                    <div class="column" style="border: 1px solid black;">
+                        <label for="glassOptions">Choose from more options</label>
+                        <select id="glassOptions" name="glassOptions">
+                            <option id="optionList"></option>
+                        </select>
+                    </div>
                 </div>
             </div>
           </div>
@@ -96,6 +97,17 @@
               <div class="column" style="border: 1px solid black;">8</div>
             </div> -->
           </div>
+    
+    <!--GLASS AFTER CLICK-->
+        <!--Display one random drink card recipe in right col, change glass button or search again-->
+
+
+
+    
+    <!--FOOD/DRINK Screen1 *** NICO EDIT 2020 06 15: VERY ROUGH SKELETON--> 
+        <!--Subtext-->
+        <!--For 1: Search favorite meal; with text input & submit button-->
+        <!--For 2: Search ingredient; with text, dropdown number & submit button-->
 
      <!--FOOD/DRINK Screen2-->    
         <!--Header-->
@@ -104,9 +116,6 @@
 
      <!--FOOD/DRINK Screen3 - RECIPE-->  
         <!--Name, photo, ingredient list with measurements, directions, star meal/drink, and return button (search again/ view saved)-->
-    
-    <!--GLASS AFTER CLICK-->
-        <!--Display one random drink card recipe in right col, change glass button or search again-->
 
     <!--USER PAGE-->
         <!--Food history-->
@@ -115,7 +124,7 @@
             <!--top three starred items, button to go to all starred items-->
 
     <!-- JavaScript File -->
-    <script style="javascript" src="script.js"></script>
+    <script src="script.js"></script>
     <!-- Semantic UI -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="semantic/dist/semantic.min.js"></script>
