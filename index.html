@@ -13,111 +13,24 @@
 </head>
 
 <body>
+    <!--WHOLE PAGE CONTAINER-->
+    <div class="ui container">
 
-    <!-- HOME PAGE *** NICO EDIT 2020 06 15: VERY ROUGH SKELETON *** MACK EDIT INPUT OF PAGE ELEMENTS-->
-    <div class="ui stackable grid">
-        <div class="one column row">
-            <div class="column" style="border: 1px solid black;">
-                <h1>Some Kind of Header Here</h1>
+        <!--PAGE HEADER-->
+        <div class="one column row" id="header">
+            <div class="column">
+                <h1 class="ui huge header" id="">Some Kind of Header Here</h1>
                 <p>Subhead here...</p>
             </div>
         </div>
-        <div class="three column row">
-            <div class="two wide column" style="border: 1px solid black;">
-                <div class="ui vertical fluid tabular menu">
-                    <a class="active item">
-                        <input class="navItem" id="home" type="image" src="icons/home.png" />
-                    </a>
-                    <a class="item">
-                        <input class="navItem" id="food" type="image" src="icons/food.png" />
-                    </a>
-                    <a class="item">
-                        <input class="navItem" id="drink" type="image" src="icons/drink.png" />
-                    </a>
-                    <a class="item">
-                        <input class="navItem" id="user" type="image" src="icons/user.png" />
-                    </a>
-                </div>
-                <!--PLAIN COLUMN NAV OPTION-->
-                <!-- <div class="column" style="border: 1px solid black;">nav icon</div>
-                    <div class="column" style="border: 1px solid black;">nav icon</div>
-                    <div class="column" style="border: 1px solid black;">nav icon</div>
-                    <div class="column" style="border: 1px solid black;">nav icon</div> -->
-            </div>
-            <div class="seven wide column" style="border: 1px solid black;">
-                <div class="column" style="border: 1px solid black;">
-                    <h2 class="centerItem">Your next dinner party<br>at the touch of a button.</h2>
-                    <h3 class="centerItem">Find the perfect recipes for your<br>favorite meals and cocktails.</h3>
-                </div>
-                <div class="column" style="border: 1px solid black;">
-                    <img>
-                    <button></button>
-                </div>
-                <div class="column" style="border: 1px solid black;">
-                    <img>
-                    <button></button>
-                </div>
-            </div>
-            <div class="seven wide column row" style="border: 1px solid black;">
-                <div class="column" style="border: 1px solid black;">
-                    <div class="glassContainer">
-                        <input class="glassItem" id="collins" type="image" src="icons/collins.png" />
-                        <input class="glassItem" id="martini" type="image" src="icons/martini.png" />
-                        <input class="glassItem" id="oldfashion" type="image" src="icons/oldfashion.png" />
-                        <input class="glassItem" id="shots" type="image" src="icons/shots.png" />
-                        <input class="glassItem" id="masonjar" type="image" src="icons/masonjar.png" />
-                        <input class="glassItem" id="margarita" type="image" src="icons/margarita.png" />
-                    </div>
-                </div>
-                <div class="column" style="border: 1px solid black;">
-                    <h2>What are you in the mood for?</h2>
-                    <h3>Pick your glass and we’ll do the rest!</h3>
-                </div>
-                <div class="column" style="border: 1px solid black;">
-                    <label for="glassOptions">Choose from more options</label>
-                    <select id="glassOptions" name="glassOptions">
-                        <option id="optionList"></option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- <div class="ui relaxed grid">
-            <div class="three column row">
-              <div class="column" style="border: 1px solid black;">1</div>
-              <div class="column" style="border: 1px solid black;">2</div>
-              <div class="column" style="border: 1px solid black;">3</div>
-            </div>
-            <div class="eight column row">
-              <div class="column" style="border: 1px solid black;">1</div>
-              <div class="column" style="border: 1px solid black;">2</div>
-              <div class="column" style="border: 1px solid black;">3</div>
-              <div class="column" style="border: 1px solid black;">4</div>
-              <div class="column" style="border: 1px solid black;">5</div>
-              <div class="column" style="border: 1px solid black;">6</div>
-              <div class="column" style="border: 1px solid black;">7</div>
-              <div class="column" style="border: 1px solid black;">8</div>
-            </div> -->
-    </div>
 
-    <!--GLASS AFTER CLICK-->
-    <!--Display one random drink card recipe in right col, change glass button or search again-->
-
-    <!--FOOD/DRINK SCREEN1: Search-->
-    <!--WHOLE PAGE CONTAINER-->
-    <div class="ui container">
-        <!--MAIN CONTENT CONTAINER-->
-        <div class="ui stackable grid">
-            <!--PAGE HEADER-->
-            <div class="one column row">
-                <div class="column">
-                    <h1 class="ui huge header" id="">Some Kind of Header Here</h1>
-                    <p>Subhead here...</p>
-                </div>
-            </div>
+         <!--HOME MAIN PAGE CONTAINER-->
+         <div class="ui stackable grid" id="homePage">
+            
             <!--CONTENT-->
             <div class="three column row">
-                <!--LEFT NAVIGATION-->
+
+                <!--LEFT CONTAINER NAVIGATION-->
                 <div class="two wide column">
                     <div class="ui vertical fluid tabular menu">
                         <a class="active item" id="home">
@@ -134,14 +47,88 @@
                         </a>
                     </div>
                 </div>
-                <!--LEFT CONTAINER-->
+                <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
-                        <h1 id="main-header">Your Dish is Our Command</h1>
+                        <h1 id="main-header">Your next dinner party<br>at the touch of a button.</h1>
+                        <h3>Find the perfect recipes for your<br>favorite meals and cocktails.</h3>
                     </div>
                     <div class="row">
-                        <p>Enter the name of your favorite meal below and we'll serve up the recipe to satisfy your
-                            craving.</p>
+                        <button></button>
+                    </div>
+                    <div class="row">
+                        <button></button>
+                    </div>
+                </div>
+                <!--RIGHT CONTAINER-->
+                <div class="seven wide column row">
+                    <div class="row">
+                        <div class="glassContainer">
+                            <input class="glassItem" id="collins" type="image" src="icons/collins.png" />
+                            <input class="glassItem" id="martini" type="image" src="icons/martini.png" />
+                            <input class="glassItem" id="oldfashion" type="image" src="icons/oldfashion.png" />
+                            <input class="glassItem" id="shots" type="image" src="icons/shots.png" />
+                            <input class="glassItem" id="masonjar" type="image" src="icons/masonjar.png" />
+                            <input class="glassItem" id="margarita" type="image" src="icons/margarita.png" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h2>What are you in the mood for?</h2>
+                    <h3>Pick your glass and we’ll do the rest!</h3>
+                    </div>
+                    <div class="row">
+                        <div class="ui form">
+                            <div class="field">
+                                <label>Choose from more options.</label>
+                                <div class="ui selection dropdown">
+                                    <input type="hidden" name="gender">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text" data-value="5">Five</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1">One</div>
+                                        <div class="item" data-value="2">Two</div>
+                                        <div class="item" data-value="3">Three</div>
+                                        <div class="item" data-value="4">Four</div>
+                                        <div class="item" data-value="5">Five</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--FOOD MAIN PAGE CONTAINER-->
+        <div class="ui stackable grid" id="foodPage">
+            
+            <!--CONTENT-->
+            <div class="three column row">
+                
+                <!--LEFT CONTAINER NAVIGATION-->
+                <div class="two wide column">
+                    <div class="ui vertical fluid tabular menu">
+                        <a class="item" id="home">
+                            <img src="icons/home.png" alt="house icon">
+                        </a>
+                        <a class="active item" id="food" alt="fork and spoon icon">
+                            <img src="icons/food.png">
+                        </a>
+                        <a class="item" id="drink" alt="martini glass icon">
+                            <img src="icons/drink.png">
+                        </a>
+                        <a class="item" id="user" alt=" stylized person icon">
+                            <img src="icons/user.png">
+                        </a>
+                    </div>
+                </div>
+                <!--MIDDLE CONTAINER-->
+                <div class="seven wide column pusher">
+                    <div class="row" id="page-header">
+                        <h1 id="main-header">Your dish is our command.</h1>
+                    </div>
+                    <div class="row">
+                        <p>Enter the name of your favorite meal below and we'll serve up the recipe to satisfy your craving.</p>
                     </div>
                     <div class="row">
                         <div class="ui fluid icon input">
@@ -153,7 +140,7 @@
                 <!--RIGHT CONTAINER-->
                 <div class="seven wide column row">
                     <div class="row">
-                        <h1>Ingredient Header To Come</h1>
+                        <h1>Ingredient header to come</h1>
                     </div>
                     <div class="row">
                         <p>Select the cornerstone ingredient upon which to construct your meal.</p>
@@ -184,15 +171,133 @@
                 </div>
             </div>
         </div>
-    </div>
-        <!--FOOD/DRINK Screen3 - RECIPE-->
-        <!--Name, photo, ingredient list with measurements, directions, star meal/drink, and return button (search again/ view saved)-->
+        
+        <!--DRINK MAIN PAGE CONTAINER-->
+        <div class="ui stackable grid" id="drinkPage">
+            
+            <!--CONTENT-->
+            <div class="three column row">
 
-        <!--USER PAGE-->
-        <!--Food history-->
-        <!--top three starred items, button to go to all starred items-->
-        <!--Food history-->
-        <!--top three starred items, button to go to all starred items-->
+                <!--LEFT CONTAINER NAVIGATION-->
+                <div class="two wide column">
+                    <div class="ui vertical fluid tabular menu">
+                        <a class="item" id="home">
+                            <img src="icons/home.png" alt="house icon">
+                        </a>
+                        <a class="item" id="food" alt="fork and spoon icon">
+                            <img src="icons/food.png">
+                        </a>
+                        <a class="active item" id="drink" alt="martini glass icon">
+                            <img src="icons/drink.png">
+                        </a>
+                        <a class="item" id="user" alt=" stylized person icon">
+                            <img src="icons/user.png">
+                        </a>
+                    </div>
+                </div>
+                <!--MIDDLE CONTAINER-->
+                <div class="seven wide column pusher">
+                    <div class="row" id="page-header">
+                        <h1 id="main-header">No worries! The drink is on us.</h1>
+                    </div>
+                    <div class="row">
+                        <p>Enter the name of your favorite cocktail below and we'll mix up the recipe to quench your thirst.</p>
+                    </div>
+                    <div class="row">
+                        <div class="ui fluid icon input">
+                            <input type="text" placeholder="Tell us your favorite meal">
+                            <i class="search icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--RIGHT CONTAINER-->
+                <div class="seven wide column row">
+                    <div class="row">
+                        <h1>Ingredient header to come</h1>
+                    </div>
+                    <div class="row">
+                        <p>Select the cornerstone ingredient upon which to construct your drink.</p>
+                    </div>
+                    <div class="row">
+                        <div class="ui fluid icon input">
+                            <input type="text" placeholder="The secret ingredient is...">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="ui form">
+                            <div class="field">
+                                <label>Number of recipes to return</label>
+                                <div class="ui selection dropdown">
+                                    <input type="hidden" name="gender">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text" data-value="5">Five</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1">One</div>
+                                        <div class="item" data-value="2">Two</div>
+                                        <div class="item" data-value="3">Three</div>
+                                        <div class="item" data-value="4">Four</div>
+                                        <div class="item" data-value="5">Five</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--USER MAIN PAGE CONTAINER-->
+        <div class="ui stackable grid" id="userPage">
+            
+            <!--CONTENT-->
+            <div class="three column row">
+
+                <!--LEFT CONTAINER NAVIGATION-->
+                <div class="two wide column">
+                    <div class="ui vertical fluid tabular menu">
+                        <a class="item" id="home">
+                            <img src="icons/home.png" alt="house icon">
+                        </a>
+                        <a class="item" id="food" alt="fork and spoon icon">
+                            <img src="icons/food.png">
+                        </a>
+                        <a class="item" id="drink" alt="martini glass icon">
+                            <img src="icons/drink.png">
+                        </a>
+                        <a class="active item" id="user" alt=" stylized person icon">
+                            <img src="icons/user.png">
+                        </a>
+                    </div>
+                </div>
+                <!--MIDDLE CONTAINER-->
+                <div class="seven wide column pusher">
+                    <div class="row" id="page-header">
+                        <h1 id="main-header">User profile header to come</h1>
+                    </div>
+                    <div class="row">
+                        <p>Example text</p>
+                    </div>
+                    <div class="row">
+                        <p>Example text</p>
+                    </div>
+                </div>
+                <!--RIGHT CONTAINER-->
+                <div class="seven wide column row">
+                    <div class="row">
+                        <h1>Another header to come</h1>
+                    </div>
+                    <div class="row">
+                        <p>Example text</p>
+                    </div>
+                    <div class="row">
+                        <p>Example text</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div> <!--END of whole page container-->
 
         <!-- JavaScript File -->
         <script src="script.js"></script>
@@ -203,3 +308,30 @@
 </body>
 
 </html>
+
+
+<!--CODE WRITTEN NOT CURRENTLY IN USE-->
+
+<!--PLAIN COLUMN NAV OPTION-->
+    <!-- <div class="column" style="border: 1px solid black;">nav icon</div>
+        <div class="column" style="border: 1px solid black;">nav icon</div>
+        <div class="column" style="border: 1px solid black;">nav icon</div>
+        <div class="column" style="border: 1px solid black;">nav icon</div> -->
+
+    <!-- <div class="ui relaxed grid">
+            <div class="three column row">
+              <div class="column" style="border: 1px solid black;">1</div>
+              <div class="column" style="border: 1px solid black;">2</div>
+              <div class="column" style="border: 1px solid black;">3</div>
+            </div>
+            <div class="eight column row">
+              <div class="column" style="border: 1px solid black;">1</div>
+              <div class="column" style="border: 1px solid black;">2</div>
+              <div class="column" style="border: 1px solid black;">3</div>
+              <div class="column" style="border: 1px solid black;">4</div>
+              <div class="column" style="border: 1px solid black;">5</div>
+              <div class="column" style="border: 1px solid black;">6</div>
+              <div class="column" style="border: 1px solid black;">7</div>
+              <div class="column" style="border: 1px solid black;">8</div>
+            </div> -->
+    <!-- </div> -->
