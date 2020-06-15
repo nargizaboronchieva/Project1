@@ -1,7 +1,22 @@
-#sideNav {
-    width: 7%;
+.grid {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 3;
 }
 
-.sideNav {
+.grid.item {
+    grid-column: 1;
+    align-self: start;
+    justify-self: center;
+}
+
+.sideNavContainer {
+    width: 5.5%;
+    padding: 2%;
+}
+
+.navItem {
     width: 100%;
+    padding: 40%;
 }
