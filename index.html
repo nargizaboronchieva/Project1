@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 1</title>
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="style.css">
     <!-- Semantic UI -->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <!-- CSS Stylesheet ***NICO CHANGE 2020 06 15 - Moved custom CSS file below Semantic UI CSS file-->
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
@@ -21,6 +21,13 @@
         <input class="navItem" id="drink" type="image" src="icons/drink.png"/>
         <input class="navItem" id="user" type="image" src="icons/user.png"/>
     </div>
+    
+    <!-- <div id="sideNav">
+        <input class="sideNav" id="home" type="image" src="icons/home.png"/>
+        <input class="sideNav" id="food" type="image" src="icons/food.png"/>
+        <input class="sideNav" id="drink" type="image" src="icons/drink.png"/>
+        <input class="sideNav" id="user" type="image" src="icons/user.png"/>
+    </div> -->
 
     <!--CENTER-->
         <!--Header-->    
@@ -39,7 +46,11 @@
     </div>
 
     <!--RIGHT-->
-        <!--Continer with 6 glass buttons-->
+        <!--Container with 6 glass buttons-->
+        <!--Header-->
+        <!--optional dropdown with more options-->
+
+    <!--FOOD/DRINK Screen1 *** NICO EDIT 2020 06 15: VERY ROUGH SKELETON-->  
         <!--Header-->
         <!--optional dropbown with more options-->
     <div class="rightContainer">
@@ -59,19 +70,77 @@
         </select>
     </div>
 
-    <!--FOOD/DRINK Screen1-->    
-        <!--Heeader-->
         <!--Subtext-->
-        <!--For 1: Search favorite meal; with text inpu & submit button-->
-        <!--For 2: Searchingredient; with text, dropdown number & submit button-->
+        <!--For 1: Search favorite meal; with text input & submit button-->
+        <!--For 2: Search ingredient; with text, dropdown number & submit button-->
+        <div class="ui stackable grid">
+            <div class="one column row">
+                <div class="column" style="border: 1px solid black;">
+                    <h1>Some Kind of Header Here</h1>
+                    <p>Subhead here...</p>
+                </div>
+            </div>
+            <div class="three column row">
+                <div class="two wide column" style="border: 1px solid black;">
+                    <div class="ui vertical fluid tabular menu">
+                        <a class="active item">
+                          Home Icon
+                        </a>
+                        <a class="item">
+                          Food Icon
+                        </a>
+                        <a class="item">
+                          Drink Icon
+                        </a>
+                        <a class="item">
+                          User Icon
+                        </a>
+                      </div>
+                    <!--PLAIN COLUMN NAV OPTION-->  
+                    <!-- <div class="column" style="border: 1px solid black;">nav icon</div>
+                    <div class="column" style="border: 1px solid black;">nav icon</div>
+                    <div class="column" style="border: 1px solid black;">nav icon</div>
+                    <div class="column" style="border: 1px solid black;">nav icon</div> -->
+                </div>
+                <div class="seven wide column" style="border: 1px solid black;">
+                    <div class="column" style="border: 1px solid black;">a</div>
+                    <div class="column" style="border: 1px solid black;">b</div>
+                    <div class="column" style="border: 1px solid black;">c</div>
+                    <div class="column" style="border: 1px solid black;">d</div>
+                </div>
+                <div class="seven wide column row" style="border: 1px solid black;">
+                    <div class="column" style="border: 1px solid black;">e</div>
+                    <div class="column" style="border: 1px solid black;">f</div>
+                    <div class="column" style="border: 1px solid black;">g</div>
+                    <div class="column" style="border: 1px solid black;">h</div>
+                </div>
+            </div>
+          </div>
+          <!-- <div class="ui relaxed grid">
+            <div class="three column row">
+              <div class="column" style="border: 1px solid black;">1</div>
+              <div class="column" style="border: 1px solid black;">2</div>
+              <div class="column" style="border: 1px solid black;">3</div>
+            </div>
+            <div class="eight column row">
+              <div class="column" style="border: 1px solid black;">1</div>
+              <div class="column" style="border: 1px solid black;">2</div>
+              <div class="column" style="border: 1px solid black;">3</div>
+              <div class="column" style="border: 1px solid black;">4</div>
+              <div class="column" style="border: 1px solid black;">5</div>
+              <div class="column" style="border: 1px solid black;">6</div>
+              <div class="column" style="border: 1px solid black;">7</div>
+              <div class="column" style="border: 1px solid black;">8</div>
+            </div> -->
+          </div>
 
      <!--FOOD/DRINK Screen2-->    
-        <!--Heeader-->
+        <!--Header-->
         <!--Subtext-->
         <!--Dynamically generated cards containing clickable results-->
 
      <!--FOOD/DRINK Screen3 - RECIPE-->  
-        <!--Naem, photo, ingredient list with measurements, directions, star meal/drink, and return button (search again/ view saved)-->
+        <!--Name, photo, ingredient list with measurements, directions, star meal/drink, and return button (search again/ view saved)-->
     
     <!--GLASS AFTER CLICK-->
         <!--Display one random drink card recipe in right col, change glass button or search again-->
