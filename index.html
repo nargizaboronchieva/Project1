@@ -13,8 +13,9 @@
 <body>
 
     <!-- HOME PAGE -->
-    
-    <div class="sideNavContainer grid">
+
+    <!-- Navigation -->
+    <div class="sideNavContainer">
         <input class="navItem" id="home" type="image" src="icons/home.png"/>
         <input class="navItem" id="food" type="image" src="icons/food.png"/>
         <input class="navItem" id="drink" type="image" src="icons/drink.png"/>
@@ -24,11 +25,39 @@
     <!--CENTER-->
         <!--Header-->    
         <!--Container with 2 rows; rows each contain 2 col (img/food; food/img + buttons-->
+    <div class="centerContainer">
+        <h2 class="centerItem">Your next dinner party<br>at the touch of a button.</h2>
+        <h3 class="centerItem">Find the perfect recipes for your<br>favorite meals and cocktails.</h3>
+        <div class="row">
+            <img>
+            <button></button>
+        </div>
+        <div class="row">
+            <img>
+            <button></button>
+        </div>
+    </div>
 
     <!--RIGHT-->
         <!--Continer with 6 glass buttons-->
         <!--Header-->
         <!--optional dropbown with more options-->
+    <div class="rightContainer">
+        <div class="glassContainer">
+            <input class="glassItem" id="collins" type="image" src="icons/collins.png"/>
+            <input class="glassItem" id="martini" type="image" src="icons/martini.png"/>
+            <input class="glassItem" id="oldfashion" type="image" src="icons/oldfashion.png"/>
+            <input class="glassItem" id="shots" type="image" src="icons/shots.png"/>
+            <input class="glassItem" id="masonjar" type="image" src="icons/masonjar.png"/>
+            <input class="glassItem" id="margarita" type="image" src="icons/margarita.png"/>
+        </div>
+        <h2>What are you in the mood for?</h2>
+        <h3>Pick your glass and we’ll do the rest!</h3>
+        <label for="glassOptions">Choose from more options</label>
+        <select id="glassOptions" name="glassOptions">
+            <option id="optionList"></option>
+        </select>
+    </div>
 
     <!--FOOD/DRINK Screen1-->    
         <!--Heeader-->
@@ -54,7 +83,7 @@
             <!--top three starred items, button to go to all starred items-->
 
     <!-- JavaScript File -->
-    <script style="javascript" src="script.js"></script>
+    <script src="script.js"></script>
     <!-- Semantic UI -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="semantic/dist/semantic.min.js"></script>
