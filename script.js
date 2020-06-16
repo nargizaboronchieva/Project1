@@ -5,6 +5,17 @@ document.getElementById("foodPage").style.display = "none";
 document.getElementById("drinkPage").style.display = "none";
 document.getElementById("userPage").style.display = "none";
 
+// Data structure of each single meal 
+// var mealObj = {
+//     mName:"Fried Chicken",
+//     mRecipe:"",
+//     mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],
+//     mPic:""
+// }
+
+// Array List of favorite Recipes
+var arrayR = [];
+
 // SHOW HOME PAGE
 $("#home").on("click", showHome);
 // id="home" button
@@ -45,33 +56,57 @@ function mealList(event) {
         url:fURL,
         method:"GET"
     }).then(processData)
-
-
 } // end mealList
 
 
 function processData(fObject) {
     console.log("food object is:", fObject);
+
     var foodName = fObject.meals[0].strMeal;
     var foodInst = fObject.meals[0].strInstructions;
+    var foodPic = fObject.meals[0].strMealThumb;
 
-    // loop thru max 20 ingredients
+    //Create new mealObj
+    var mealObj={};
+    mealObj['mName'] = foodName;
+    mealObj['mInst'] = foodInst;
+    mealObj['mPic'] = foodPic;
+    mealObj['mIngreQty']=[]; // Array to store multiple Ingredients for that same meal
+
+    // Below will retrive an unknown number of ingredients.
+    // Loop thru max 20 ingredients/qty
+    // Initialize the first ingredent and qty index
     var index = 1;
-    abc = "strIngredient"+ index;
-    while (fObject.meals[0].("strIngredient"+index)) {
-        console.log("Success");
-        if ((fObject.meals[0].("strIngredient" + index) =="")) {
-            index++;
-            console.log("food ingredit");
-        } // end If
+    var ingre = "strIngredient" + index;
+    var ingreQty = "strMeasure" + index;
+
+    // If ingredent field is not blank And searched <= 20
+    while ((fObject.meals[0][ingre] != "") && (index <= 20)) {
+        
+        console.log(" Ingredient: ", index, ": ", fObject.meals[0][ingre]);
+        console.log(" Quantity: ", fObject.meals[0][ingreQty]);
+        
+        // create Dict for Ingredient/Qty, on that index (ingredent #)  
+        mealObj['mIngreQty'][index]={};
+
+        // assign Ingredient Name, and Qty to this new key/value pair.
+        mealObj['mIngreQty'][index-1]={'mIngre':fObject.meals[0][ingre]};
+        mealObj['mIngreQty'][index-1]={'mIngreQty':fObject.meals[0][ingreQty]};
+
+        index++;
+        // New property name base on next index
+        var ingre = "strIngredient" + index;
+        var ingreQty = "strMeasure" + index;
+        
+        console.log("This meal obj is: ", mealObj);
+
     } // end While
    
-    var foodIngre 
-    console.log("meal name:", foodName);
-    console.log("meal name:", foodInst);
+
+ 
 
     // After received results, call mealListRender() for each one
-}
+} // end Process Data
 
 
 
