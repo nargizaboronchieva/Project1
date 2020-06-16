@@ -5,19 +5,20 @@ document.getElementById("foodPage").style.display = "none";
 document.getElementById("drinkPage").style.display = "none";
 document.getElementById("userPage").style.display = "none";
 
-// Data structure of each single meal 
-// var mealObj = {
-//     mName:"Fried Chicken",
-//     mRecipe:"",
-//     mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],
-//     mPic:""
-// }
+// SHOW HOME PAGE
+Data structure of each single meal 
+var mealObj = {
+    mName:"Fried Chicken",
+    mRecipe:"",
+    mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],
+    mPic:""
+}
 
 // Array List of favorite Recipes
 var arrayR = [];
 
 // id="home" button
-// id="homePage"
+// id="homePage" section
 $("#home").on("click", showHome);
 function showHome(){
     console.log("Enter showHome");
@@ -26,6 +27,20 @@ function showHome(){
     document.getElementById("drinkPage").style.display = "none";
     document.getElementById("userPage").style.display = "none";
 };
+
+// BUTTON TO SHOW RANDOM DRINK SECTION
+// id="randomGlassSubmit" button
+// id="randomGlass" section
+// id="randomDrink" section
+$("#randomGlassSubmit").on("click", showRandomDrinkSection);
+function showRandomDrinkSection(){
+    document.getElementById("randomGlass").style.display = "none";
+    document.getElementById("randomDrink").style.display = "block";
+}
+
+// SHOW RANDOM DRINK SECTION
+// button
+// id="randomDrink"
 
 // SHOW FOOD MAIN PAGE
 // id="food" button
@@ -109,7 +124,7 @@ function processData(fObject) {
 
 // SHOW DRINK MAIN PAGE
 // id="drink" button
-// id="drinkPage"
+// id="drinkPage" section
 $("#drink").on("click", showDrinkPage);
 function showDrinkPage(){
     document.getElementById("homePage").style.display = "none";
@@ -120,7 +135,7 @@ function showDrinkPage(){
 
 // SHOW USER PROFILE
 // id="user" button
-// id="userPage"
+// id="userPage" section
 $("#user").on("click", showUserProfile);
 function showUserProfile(){
     console.log("Enter showUserProfile");

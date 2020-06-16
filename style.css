@@ -15,19 +15,70 @@ h3 {
     font-weight: 400;
 }
 
-/* Navigation */
+/* NAVIGATION */
 
 /* Items */
 .navItem {
-    width: 10px;
     white-space: pre;
+}
+
+.navItem > img {
+    width: 40%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    margin-left: 10%;
+}
+
+/* HOME PAGE */
+
+/* Header */
+#headingStyle {
+    margin-top: 7%;
+    margin-left: 5%;
+}
+
+/* Drink Icons */
+.glassContainer {
+    margin-top: 5%;
+    margin-right: 10%;
 }
 
 .glassItem {
     width: 30%;
 }
 
-.navItem > img {
-    width: 40%;
-    margin: 10px;
+#moodText {
+    margin-top: 2%;
+    margin-left: 5%;
 }
+
+/* This moves to line with glasses */
+#optionDrop {
+    margin-left: 5%;
+}
+
+/* Choose from Options */
+.dropDownLabel {
+    padding: 20px 10px 10px 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 1px;
+}
+
+#randomGlassSubmit {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Random Drink Generator Section */
+
+#randomDrink {
+    display: none;
+}
+
+/* FOOD PAGE */
+
+/* DRINK PAGE */
+
+/* USER PAGE */

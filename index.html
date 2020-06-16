@@ -14,7 +14,7 @@
 
 <body>
     <!-- SIDE BAR NAVIGATION -->
-    <div class="ui left visible sidebar">
+    <div class="ui left visible thin sidebar">
         <a class="item navItem" id="home">
             <img src="icons/home.png" alt="house icon">
         </a>
@@ -37,11 +37,12 @@
         
             <!--CONTENT-->
             <div class="three column row">
+                
                 <!--MIDDLE CONTAINER-->
-                <div class="seven wide column pusher">
+                <div class="seven wide column pusher" id="headingStyle">
                     <div class="row" id="page-header">
-                        <h1 id="main-header">Your next dinner party<br>at the touch of a button.</h1>
-                        <h3>Find the perfect recipes for your<br>favorite meals and cocktails.</h3>
+                        <h1 id="main-header">Your next dinner party at the touch of a button.</h1>
+                        <h3>Find the perfect recipes for your favorite meals and cocktails.</h3>
                     </div>
                     <div class="row">
                         <button></button>
@@ -50,8 +51,9 @@
                         <button></button>
                     </div>
                 </div>
-                <!--RIGHT CONTAINER-->
-                <div class="seven wide column row">
+                
+                <!--RIGHT CONTAINER: SHOWN ON LOAD-->
+                <div class="seven wide column row" id="randomGlass">
                     <div class="row">
                         <div class="glassContainer">
                             <input class="glassItem" id="collins" type="image" src="icons/collins.png" />
@@ -62,38 +64,43 @@
                             <input class="glassItem" id="margarita" type="image" src="icons/margarita.png" />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="moodText">
                         <h2>What are you in the mood for?</h2>
-                    <h3>Pick your glass and we’ll do the rest!</h3>
+                        <h3>Pick your glass and we’ll do the rest!</h3>
                     </div>
-                    <div class="row">
-                        <div class="ui form">
+                    <div class="row" id="optionDrop">
+                        <form class="ui form">
                             <div class="field">
-                                <label>Choose from more options.</label>
-                                <div class="ui selection dropdown">
-                                    <input type="hidden" name="gender">
-                                    <i class="dropdown icon"></i>
-                                    <div class="default text" data-value="5">Five</div>
-                                    <div class="menu">
-                                        <div class="item" data-value="1">One</div>
-                                        <div class="item" data-value="2">Two</div>
-                                        <div class="item" data-value="3">Three</div>
-                                        <div class="item" data-value="4">Four</div>
-                                        <div class="item" data-value="5">Five</div>
-                                    </div>
-                                </div>
+                              <label class="dropDownLabel">Choose from more Options</label>
+                              <select class="ui dropdown" name="dropdown">
+                                <option value="male">Choice 1</option>
+                                <option value="female">Choice 2</option>
+                              </select>
                             </div>
-                        </div>
+                            <div class="ui submit button" id="randomGlassSubmit">Submit</div>
+                          </form>
+                    </div>
+                </div>
+
+                <!--CONTENT SHOWN AFTER EVENT: SET TO DISPLAY NONE IN CSS-->
+                <div class="ui card" id="randomDrink">
+                    <div class="content">
+                      <i class="right floated star icon"></i>
+                      <div class="header">Example Recipe Card</div>
+                      <div class="description">
+                        <p>Directions will go here</p>
+                      </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!--End Home Page-->
     
         <!--FOOD MAIN PAGE CONTAINER-->
         <div class="ui stackable grid" id="foodPage">
             
             <!--CONTENT-->
             <div class="three column row">
+                
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
@@ -110,6 +117,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <!--RIGHT CONTAINER-->
                 <div class="seven wide column row">
                     <div class="row">
@@ -150,6 +158,7 @@
             
             <!--CONTENT-->
             <div class="three column row">
+                
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
@@ -162,9 +171,10 @@
                         <div class="ui fluid icon input">
                             <input type="text" id="drinkInput" placeholder="Tell us your favorite meal">
                         </div>
-                        <button id="searchDrink" >Search Drink</button>
+                        <button id="searchDrink">Search Drink</button>
                     </div>
                 </div>
+                
                 <!--RIGHT CONTAINER-->
                 <div class="seven wide column row">
                     <div class="row">
@@ -218,6 +228,7 @@
                         <p>Example text</p>
                     </div>
                 </div>
+                
                 <!--RIGHT CONTAINER-->
                 <div class="seven wide column row">
                     <div class="row">
@@ -250,29 +261,37 @@
 
 </html>
 
+<!-- CARDS FOR RESULT DISPLAYS -->
 
-<!--CODE WRITTEN NOT CURRENTLY IN USE-->
-
-<!--PLAIN COLUMN NAV OPTION-->
-    <!-- <div class="column" style="border: 1px solid black;">nav icon</div>
-        <div class="column" style="border: 1px solid black;">nav icon</div>
-        <div class="column" style="border: 1px solid black;">nav icon</div>
-        <div class="column" style="border: 1px solid black;">nav icon</div> -->
-
-    <!-- <div class="ui relaxed grid">
-            <div class="three column row">
-              <div class="column" style="border: 1px solid black;">1</div>
-              <div class="column" style="border: 1px solid black;">2</div>
-              <div class="column" style="border: 1px solid black;">3</div>
-            </div>
-            <div class="eight column row">
-              <div class="column" style="border: 1px solid black;">1</div>
-              <div class="column" style="border: 1px solid black;">2</div>
-              <div class="column" style="border: 1px solid black;">3</div>
-              <div class="column" style="border: 1px solid black;">4</div>
-              <div class="column" style="border: 1px solid black;">5</div>
-              <div class="column" style="border: 1px solid black;">6</div>
-              <div class="column" style="border: 1px solid black;">7</div>
-              <div class="column" style="border: 1px solid black;">8</div>
-            </div> -->
-    <!-- </div> -->
+<!-- <div class="ui three column grid" id="randomDrink">
+    <div class="column">
+    <div class="ui fluid card">
+        <div class="image">
+        <img src="/images/avatar/large/daniel.jpg">
+        </div>
+        <div class="content">
+        <a class="header">Daniel Louise</a>
+        </div>
+    </div>
+    </div>
+    <div class="column">
+    <div class="ui fluid card">
+        <div class="image">
+        <img src="/images/avatar/large/helen.jpg">
+        </div>
+        <div class="content">
+        <a class="header">Helen Troy</a>
+        </div>
+    </div>
+    </div>
+    <div class="column">
+    <div class="ui fluid card">
+        <div class="image">
+        <img src="/images/avatar/large/elliot.jpg">
+        </div>
+        <div class="content">
+        <a class="header">Elliot Fu</a>
+        </div>
+    </div>
+    </div>
+</div> -->
