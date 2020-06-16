@@ -16,10 +16,9 @@ document.getElementById("userPage").style.display = "none";
 // Array List of favorite Recipes
 var arrayR = [];
 
-// SHOW HOME PAGE
-$("#home").on("click", showHome);
 // id="home" button
 // id="homePage"
+$("#home").on("click", showHome);
 function showHome(){
     console.log("Enter showHome");
     document.getElementById("homePage").style.display = "block";
@@ -33,13 +32,11 @@ function showHome(){
 // id="foodPage"
 $("#food").on("click", showFoodPage);
 function showFoodPage(){
-    console.log("Enter showFoodPage");
     document.getElementById("homePage").style.display = "none";
     document.getElementById("foodPage").style.display = "block";
     document.getElementById("drinkPage").style.display = "none";
     document.getElementById("userPage").style.display = "none";
-
-};
+ };
 
 // Listener for Meal Search
 $("#searchMeal").on("click", mealList);
@@ -114,11 +111,7 @@ function processData(fObject) {
 // id="drink" button
 // id="drinkPage"
 $("#drink").on("click", showDrinkPage);
-function showDrinkPage(event){
-    event.preventDefault();
-    event.stopPropagation();
-
-    console.log("Enter showDrinkPage");
+function showDrinkPage(){
     document.getElementById("homePage").style.display = "none";
     document.getElementById("foodPage").style.display = "none";
     document.getElementById("drinkPage").style.display = "block";

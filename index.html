@@ -13,41 +13,30 @@
 </head>
 
 <body>
+    <!-- SIDE BAR NAVIGATION -->
+    <div class="ui left visible sidebar">
+        <a class="item navItem" id="home">
+            <img src="icons/home.png" alt="house icon">
+        </a>
+        <a class="item navItem" id="food">
+            <img src="icons/food.png" alt="fork and spoon icon">
+        </a>
+        <a class="item navItem" id="drink">
+            <img src="icons/drink.png" alt="martini glass icon">
+        </a>
+        <a class="item navItem" id="user">
+            <img src="icons/user.png" alt=" stylized person icon">
+        </a>
+    </div>
+
     <!--WHOLE PAGE CONTAINER-->
-    <div class="ui container">
+    <div class="pusher">
 
-        <!--PAGE HEADER-->
-        <div class="one column row" id="header">
-            <div class="column">
-                <h1 class="ui huge header" id="">Some Kind of Header Here</h1>
-                <p>Subhead here...</p>
-            </div>
-        </div>
-
-         <!--HOME MAIN PAGE CONTAINER-->
-         <div class="ui stackable grid" id="homePage">
-            
+        <!--HOME MAIN PAGE CONTAINER-->
+        <div class="ui stackable grid" id="homePage">
+        
             <!--CONTENT-->
             <div class="three column row">
-
-                <!--LEFT CONTAINER NAVIGATION-->
-                <div class="two wide column">
-                    <div class="ui vertical fluid tabular menu">
-                        <a class="active item" id="home">
-                            <!-- <img src="icons/home.png" alt="house icon" onclick="showHome()"> -->
-                            <img src="icons/home.png" alt="house icon">
-                        </a>
-                        <a class="item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon">
-                        </a>
-                        <a class="item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon">
-                        </a>
-                        <a class="item" id="user" alt=" stylized person icon">
-                            <img src="icons/user.png" alt=" stylized person icon">
-                        </a>
-                    </div>
-                </div>
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
@@ -99,30 +88,12 @@
                 </div>
             </div>
         </div>
-        
+    
         <!--FOOD MAIN PAGE CONTAINER-->
         <div class="ui stackable grid" id="foodPage">
             
             <!--CONTENT-->
             <div class="three column row">
-                
-                <!--LEFT CONTAINER NAVIGATION-->
-                <div class="two wide column">
-                    <div class="ui vertical fluid tabular menu">
-                        <a class="item" id="home">
-                            <img src="icons/home.png" alt="house icon">
-                        </a>
-                        <a class="active item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon">
-                        </a>
-                        <a class="item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon">
-                        </a>
-                        <a class="item" id="user">
-                            <img src="icons/user.png" alt=" stylized person icon">
-                        </a>
-                    </div>
-                </div>
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
@@ -179,24 +150,6 @@
             
             <!--CONTENT-->
             <div class="three column row">
-
-                <!--LEFT CONTAINER NAVIGATION-->
-                <div class="two wide column">
-                    <div class="ui vertical fluid tabular menu">
-                        <a class="item" id="home">
-                            <img src="icons/home.png" alt="house icon">
-                        </a>
-                        <a class="item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon">
-                        </a>
-                        <a class="active item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon">
-                        </a>
-                        <a class="item" id="user">
-                            <img src="icons/user.png" alt=" stylized person icon">
-                        </a>
-                    </div>
-                </div>
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
@@ -253,23 +206,6 @@
             <!--CONTENT-->
             <div class="three column row">
 
-                <!--LEFT CONTAINER NAVIGATION-->
-                <div class="two wide column">
-                    <div class="ui vertical fluid tabular menu">
-                        <a class="item" id="home">
-                            <img src="icons/home.png" alt="house icon">
-                        </a>
-                        <a class="item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon">
-                        </a>
-                        <a class="item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon">
-                        </a>
-                        <a class="active item" id="user">
-                            <img src="icons/user.png" alt=" stylized person icon">
-                        </a>
-                    </div>
-                </div>
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
@@ -296,7 +232,11 @@
                 </div>
             </div>
         </div>
-    </div> <!--END of whole page container-->
+</div> <!--END pusher-->
+    
+
+
+    
 
         <!-- JavaScript File -->
      

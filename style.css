@@ -15,11 +15,19 @@ h3 {
     font-weight: 400;
 }
 
+/* Navigation */
+
 /* Items */
 .navItem {
-    width: 50px;
+    width: 10px;
+    white-space: pre;
 }
 
 .glassItem {
-    width: 70px;
+    width: 30%;
+}
+
+.navItem > img {
+    width: 40%;
+    margin: 10px;
 }
