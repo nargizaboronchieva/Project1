@@ -2,8 +2,13 @@
 // Initial document set to show home page
 document.getElementById("homePage").style.display = "block";
 document.getElementById("foodPage").style.display = "none";
+document.getElementById("mealResult").style.display = "none";
 document.getElementById("drinkPage").style.display = "none";
 document.getElementById("userPage").style.display = "none";
+
+//DROPDOWNS Functionality: Food and Drink page
+$('.ui.dropdown')
+  .dropdown();
 
 // SHOW HOME PAGE
 // Data structure of each single meal 
