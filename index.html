@@ -6,26 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 1</title>
     <!-- Semantic UI -->
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-    <!-- CSS Stylesheet ***NICO CHANGE 2020 06 15 - Moved custom CSS file below Semantic UI CSS file-->
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <!-- CSS Stylesheet-->
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <!-- SIDE BAR NAVIGATION -->
     <div class="ui left visible thin sidebar">
         <a class="item navItem" id="home">
-            <img src="icons/home.png" alt="house icon">
+            <img src="./assets/icons/home.png" alt="house icon">
         </a>
         <a class="item navItem" id="food">
-            <img src="icons/food.png" alt="fork and spoon icon">
+            <img src="./assets/icons/food.png" alt="fork and spoon icon">
         </a>
         <a class="item navItem" id="drink">
-            <img src="icons/drink.png" alt="martini glass icon">
+            <img src="./assets/icons/drink.png" alt="martini glass icon">
         </a>
         <a class="item navItem" id="user">
-            <img src="icons/user.png" alt=" stylized person icon">
+            <img src="./assets/icons/user.png" alt=" stylized person icon">
         </a>
     </div>
 
@@ -34,10 +34,10 @@
 
         <!--HOME MAIN PAGE CONTAINER-->
         <div class="ui stackable grid" id="homePage">
-        
+
             <!--CONTENT-->
             <div class="three column row">
-                
+
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher" id="headingStyle">
                     <div class="row" id="page-header">
@@ -51,17 +51,17 @@
                         <button class="ui button" id="buttonStyle">Drink Recipes</button>
                     </div>
                 </div>
-                
+
                 <!--RIGHT CONTAINER: SHOWN ON LOAD-->
                 <div class="seven wide column row" id="randomGlass">
                     <div class="row">
                         <div class="glassContainer">
-                            <input class="glassItem" id="collins" type="image" src="icons/collins.png" />
-                            <input class="glassItem" id="martini" type="image" src="icons/martini.png" />
-                            <input class="glassItem" id="oldfashion" type="image" src="icons/oldfashion.png" />
-                            <input class="glassItem" id="shots" type="image" src="icons/shots.png" />
-                            <input class="glassItem" id="masonjar" type="image" src="icons/masonjar.png" />
-                            <input class="glassItem" id="margarita" type="image" src="icons/margarita.png" />
+                            <input class="glassItem" id="collins" type="image" src="./assets/icons/collins.png" />
+                            <input class="glassItem" id="martini" type="image" src="./assets/icons/martini.png" />
+                            <input class="glassItem" id="oldfashion" type="image" src="./assets/icons/oldfashion.png" />
+                            <input class="glassItem" id="shots" type="image" src="./assets/icons/shots.png" />
+                            <input class="glassItem" id="masonjar" type="image" src="./assets/icons/masonjar.png" />
+                            <input class="glassItem" id="margarita" type="image" src="./assets/icons/margarita.png" />
                         </div>
                     </div>
                     <div class="row" id="moodText">
@@ -71,53 +71,55 @@
                     <div class="row" id="optionDrop">
                         <form class="ui form">
                             <div class="field">
-                              <label class="dropDownLabel">Choose from more Options</label>
-                              <select class="ui dropdown" name="dropdown">
-                                <option value="male">Choice 1</option>
-                                <option value="female">Choice 2</option>
-                              </select>
+                                <label class="dropDownLabel">Choose from more Options</label>
+                                <select class="ui dropdown" name="dropdown">
+                                    <option value="choice 1">Choice 1</option>
+                                    <option value="choice 2">Choice 2</option>
+                                </select>
                             </div>
                             <div class="ui submit button" id="randomGlassSubmit">Submit</div>
-                          </form>
+                        </form>
                     </div>
                 </div>
 
                 <!--CONTENT SHOWN AFTER EVENT: SET TO DISPLAY NONE IN CSS-->
                 <div class="ui card" id="randomDrink">
                     <div class="content">
-                      <i class="right floated star icon"></i>
-                      <div class="header">Example Recipe Card</div>
-                      <div class="description">
-                        <p>Directions will go here</p>
-                      </div>
+                        <i class="right floated star icon"></i>
+                        <div class="header">Example Recipe Card</div>
+                        <div class="description">
+                            <p>Directions will go here</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> <!--End Home Page-->
-    
+        </div>
+        <!--End Home Page-->
+
         <!--FOOD MAIN PAGE CONTAINER-->
         <div class="ui stackable grid" id="foodPage">
-            
+
             <!--CONTENT-->
             <div class="three column row">
-                
+
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
                         <h1 id="main-header">Your dish is our command.</h1>
                     </div>
                     <div class="row">
-                        <p>Enter the name of your favorite meal below and we'll serve up the recipe to satisfy your craving.</p>
+                        <p>Enter the name of your favorite meal below and we'll serve up the recipe to satisfy your
+                            craving.</p>
                     </div>
                     <div class="row">
                         <div class="ui fluid icon input">
                             <input type="text" id="mealInput" placeholder="Tell us your favorite meal">
-                            <button id="searchMeal" >Search Food</button>
+                            <button id="searchMeal">Search Food</button>
                             <i class="search icon"></i>
                         </div>
                     </div>
                 </div>
-                
+
                 <!--RIGHT CONTAINER-->
                 <div class="seven wide column row">
                     <div class="row">
@@ -135,7 +137,7 @@
                             <div class="field">
                                 <label>Number of recipes to return</label>
                                 <div class="ui selection dropdown">
-                                    <input type="hidden" name="gender">
+                                    <input type="hidden" name="recipe-result-number">
                                     <i class="dropdown icon"></i>
                                     <div class="default text" data-value="5">Five</div>
                                     <div class="menu">
@@ -152,20 +154,21 @@
                 </div>
             </div>
         </div>
-        
+
         <!--DRINK MAIN PAGE CONTAINER-->
         <div class="ui stackable grid" id="drinkPage">
-            
+
             <!--CONTENT-->
             <div class="three column row">
-                
+
                 <!--MIDDLE CONTAINER-->
                 <div class="seven wide column pusher">
                     <div class="row" id="page-header">
                         <h1 id="main-header">No worries! The drink is on us.</h1>
                     </div>
                     <div class="row">
-                        <p>Enter the name of your favorite cocktail below and we'll mix up the recipe to quench your thirst.</p>
+                        <p>Enter the name of your favorite cocktail below and we'll mix up the recipe to quench your
+                            thirst.</p>
                     </div>
                     <div class="row">
                         <div class="ui fluid icon input">
@@ -174,7 +177,7 @@
                         <button id="searchDrink">Search Drink</button>
                     </div>
                 </div>
-                
+
                 <!--RIGHT CONTAINER-->
                 <div class="seven wide column row">
                     <div class="row">
@@ -192,7 +195,7 @@
                             <div class="field">
                                 <label>Number of recipes to return</label>
                                 <div class="ui selection dropdown">
-                                    <input type="hidden" name="gender">
+                                    <input type="hidden" name="drink-result-number">
                                     <i class="dropdown icon"></i>
                                     <div class="default text" data-value="5">Five</div>
                                     <div class="menu">
@@ -212,7 +215,7 @@
 
         <!--USER MAIN PAGE CONTAINER-->
         <div class="ui stackable grid" id="userPage">
-            
+
             <!--CONTENT-->
             <div class="three column row">
 
@@ -228,7 +231,7 @@
                         <p>Example text</p>
                     </div>
                 </div>
-                
+
                 <!--RIGHT CONTAINER-->
                 <div class="seven wide column row">
                     <div class="row">
@@ -243,20 +246,17 @@
                 </div>
             </div>
         </div>
-</div> <!--END pusher-->
-    
+    </div>
+    <!--END pusher-->
 
+    <!-- JavaScript File -->
 
-    
-
-        <!-- JavaScript File -->
-     
-        <!-- Semantic UI -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="semantic/dist/semantic.min.js"></script>
-        <script src="script.js"></script>
+    <!-- Semantic UI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="./assets/scripts/script.js"></script>
 </body>
 
 </html>
