@@ -5,9 +5,9 @@ document.getElementById("foodPage").style.display = "none";
 document.getElementById("drinkPage").style.display = "none";
 document.getElementById("userPage").style.display = "none";
 
-// // SHOW HOME PAGE
+// SHOW HOME PAGE
 // id="home" button
-// id="homePage"
+// id="homePage" section
 $("#home").on("click", showHome);
 function showHome(){
     console.log("Enter showHome");
@@ -16,6 +16,20 @@ function showHome(){
     document.getElementById("drinkPage").style.display = "none";
     document.getElementById("userPage").style.display = "none";
 };
+
+// BUTTON TO SHOW RANDOM DRINK SECTION
+// id="randomGlassSubmit" button
+// id="randomGlass" section
+// id="randomDrink" section
+$("#randomGlassSubmit").on("click", showRandomDrinkSection);
+function showRandomDrinkSection(){
+    document.getElementById("randomGlass").style.display = "none";
+    document.getElementById("randomDrink").style.display = "block";
+}
+
+// SHOW RANDOM DRINK SECTION
+// button
+// id="randomDrink"
 
 // SHOW FOOD MAIN PAGE
 // id="food" button
@@ -75,7 +89,7 @@ function showFoodPage(){
 
 // SHOW DRINK MAIN PAGE
 // id="drink" button
-// id="drinkPage"
+// id="drinkPage" section
 $("#drink").on("click", showDrinkPage);
 function showDrinkPage(){
     document.getElementById("homePage").style.display = "none";
@@ -86,7 +100,7 @@ function showDrinkPage(){
 
 // SHOW USER PROFILE
 // id="user" button
-// id="userPage"
+// id="userPage" section
 $("#user").on("click", showUserProfile);
 function showUserProfile(){
     console.log("Enter showUserProfile");
