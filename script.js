@@ -6,16 +6,16 @@ document.getElementById("drinkPage").style.display = "none";
 document.getElementById("userPage").style.display = "none";
 
 // SHOW HOME PAGE
-Data structure of each single meal 
-var mealObj = {
-    mName:"Fried Chicken",
-    mRecipe:"",
-    mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],
-    mPic:""
-}
+// Data structure of each single meal 
+// var mealObj = {
+//     mName:"Fried Chicken",
+//     mRecipe:"",
+//     mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],
+//     mPic:""
+// }
 
-// Array List of favorite Recipes
-var arrayR = [];
+// // Array List of favorite Recipes
+// var arrayR = [];
 
 // id="home" button
 // id="homePage" section
