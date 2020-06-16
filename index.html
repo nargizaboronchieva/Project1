@@ -34,16 +34,17 @@
                 <div class="two wide column">
                     <div class="ui vertical fluid tabular menu">
                         <a class="active item" id="home">
-                            <img src="icons/home.png" alt="house icon" onclick="showHome()">
+                            <!-- <img src="icons/home.png" alt="house icon" onclick="showHome()"> -->
+                            <img src="icons/home.png" alt="house icon">
                         </a>
                         <a class="item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon" onclick="showFoodPage()">
+                            <img src="icons/food.png" alt="fork and spoon icon">
                         </a>
                         <a class="item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon" onclick="showDrinkPage()">
+                            <img src="icons/drink.png" alt="martini glass icon">
                         </a>
                         <a class="item" id="user" alt=" stylized person icon">
-                            <img src="icons/user.png" alt=" stylized person icon" onclick="showUserProfile()">
+                            <img src="icons/user.png" alt=" stylized person icon">
                         </a>
                     </div>
                 </div>
@@ -109,16 +110,16 @@
                 <div class="two wide column">
                     <div class="ui vertical fluid tabular menu">
                         <a class="item" id="home">
-                            <img src="icons/home.png" alt="house icon" onclick="showHome()">
+                            <img src="icons/home.png" alt="house icon">
                         </a>
                         <a class="active item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon" onclick="showFoodPage()">
+                            <img src="icons/food.png" alt="fork and spoon icon">
                         </a>
                         <a class="item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon" onclick="showDrinkPage()">
+                            <img src="icons/drink.png" alt="martini glass icon">
                         </a>
                         <a class="item" id="user">
-                            <img src="icons/user.png" alt=" stylized person icon" onclick="showUserProfile()">
+                            <img src="icons/user.png" alt=" stylized person icon">
                         </a>
                     </div>
                 </div>
@@ -132,7 +133,8 @@
                     </div>
                     <div class="row">
                         <div class="ui fluid icon input">
-                            <input type="text" placeholder="Tell us your favorite meal">
+                            <input type="text" id="mealInput" placeholder="Tell us your favorite meal">
+                            <button id="searchMeal" >Search Food</button>
                             <i class="search icon"></i>
                         </div>
                     </div>
@@ -182,16 +184,16 @@
                 <div class="two wide column">
                     <div class="ui vertical fluid tabular menu">
                         <a class="item" id="home">
-                            <img src="icons/home.png" alt="house icon" onclick="showHome()">
+                            <img src="icons/home.png" alt="house icon">
                         </a>
                         <a class="item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon" onclick="showFoodPage()">
+                            <img src="icons/food.png" alt="fork and spoon icon">
                         </a>
                         <a class="active item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon" onclick="showDrinkPage()">
+                            <img src="icons/drink.png" alt="martini glass icon">
                         </a>
                         <a class="item" id="user">
-                            <img src="icons/user.png" alt=" stylized person icon" onclick="showUserProfile()">
+                            <img src="icons/user.png" alt=" stylized person icon">
                         </a>
                     </div>
                 </div>
@@ -205,9 +207,9 @@
                     </div>
                     <div class="row">
                         <div class="ui fluid icon input">
-                            <input type="text" placeholder="Tell us your favorite meal">
-                            <i class="search icon"></i>
+                            <input type="text" id="drinkInput" placeholder="Tell us your favorite meal">
                         </div>
+                        <button id="searchDrink" >Search Drink</button>
                     </div>
                 </div>
                 <!--RIGHT CONTAINER-->
@@ -255,16 +257,16 @@
                 <div class="two wide column">
                     <div class="ui vertical fluid tabular menu">
                         <a class="item" id="home">
-                            <img src="icons/home.png" alt="house icon" onclick="showHome()">
+                            <img src="icons/home.png" alt="house icon">
                         </a>
                         <a class="item" id="food">
-                            <img src="icons/food.png" alt="fork and spoon icon" onclick="showFoodPage()">
+                            <img src="icons/food.png" alt="fork and spoon icon">
                         </a>
                         <a class="item" id="drink">
-                            <img src="icons/drink.png" alt="martini glass icon" onclick="showDrinkPage()">
+                            <img src="icons/drink.png" alt="martini glass icon">
                         </a>
                         <a class="active item" id="user">
-                            <img src="icons/user.png" alt=" stylized person icon" onclick="showUserProfile()">
+                            <img src="icons/user.png" alt=" stylized person icon">
                         </a>
                     </div>
                 </div>
@@ -297,11 +299,13 @@
     </div> <!--END of whole page container-->
 
         <!-- JavaScript File -->
-        <script src="script.js"></script>
+     
         <!-- Semantic UI -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="semantic/dist/semantic.min.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
