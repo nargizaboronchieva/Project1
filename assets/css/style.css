@@ -39,26 +39,18 @@ h3 {
     margin-left: 10%;
 }
 
+/* Pusher Styleing */
+#pushContainer {
+    margin: 5%;
+}
+
 /* HOME PAGE */
-
-/* Header */
-#headingStyle {
-    margin-top: 7%;
-    margin-left: 5%;
-}
-
-/* Drink Icons */
-.glassContainer {
-    margin-top: 5%;
-    margin-right: 10%;
-}
-
 .glassItem {
     width: 30%;
 }
 
 #moodText {
-    margin-top: 2%;
+    margin-top: 7%;
     margin-left: 5%;
 }
 
