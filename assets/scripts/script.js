@@ -33,13 +33,16 @@ function showHome() {
 $('.ui.dropdown')
   .dropdown();
 
+// ***** FOR NARGIZA TO EDIT
 
 // BUTTON TO SHOW RANDOM DRINK SECTION
-// id="randomGlassSubmit" button
-// id="randomGlass" section
-// id="randomDrink" section
-$("#randomGlassSubmit").on("click", showRandomDrinkSection);
-function showRandomDrinkSection() {
+// id="randomGlass" section on load
+// id="randomDrink" section after clicks
+
+// MAKE CLICK EVENT WITH EACH GLASS ID AND IMPLEMENT FUNCTION BELOW
+
+// Function to show recipe card
+function showRandomDrinkSection(){
     document.getElementById("randomGlass").style.display = "none";
     document.getElementById("randomDrink").style.display = "block";
 }
