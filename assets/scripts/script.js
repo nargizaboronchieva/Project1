@@ -146,7 +146,41 @@ $('#searchDrink').on('click', drinkList);
 function drinkList (event) {
     var drinkChoice = $('#drinkInput').val();
     console.log('userInput ' + drinkChoice);
+    //get api endpoint
+    var dURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + drinkChoice;
+    $.ajax({
+        url:dURL,
+        method:'GET'
+    }).then(function(data){
+        //grab photo from data and attr on page
+        var drink = data.drinks[0];
+        var drinkImage = drink.strDrinkThumb;
+        $('#drinkImage').attr('src', drinkImage);
+        // grab instruction from data and .text it to page
+        var drinkInstructions = drink.strInstructions;
+        $('#drinkInstructions').text(drinkInstructions);
+         
+        // strIngredient1
+        // loop through the drink ingredients
+        for (var i = 1; i < 16; i++) {
+            
+            var ingredient = drink["strIngredient" + i];
+            // ingredient will be either a string or null
+            if (ingredient === null) {
+                break;
+            }
+            // add to the drinkIngredients
+            // pretend we have <ul id="drinkIngredients"><li></li></ul> in the html
+            $("#drinkIngredients").text("<li>" + ingredient + "</li>")
+          }
+    })
+
 }
+
+
+//interact with api. get data from api. extract image directions and ingridents
+//display drink info
+
 
 
 // SHOW USER PROFILE
