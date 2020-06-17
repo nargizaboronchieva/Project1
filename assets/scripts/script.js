@@ -138,6 +138,12 @@ function showDrinkPage(){
     document.getElementById("userPage").style.display = "none";
 };
 
+$('#searchDrink').on('click', drinkList);
+
+function drinkList (event) {
+    var drinkChoice = $('#drinkInput').val();
+    console.log('userInput ' + drinkChoice);
+}
 // SHOW USER PROFILE
 // id="user" button
 // id="userPage" section
