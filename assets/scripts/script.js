@@ -80,6 +80,7 @@ function mealList(event) {
 function processData(fObject) {
     console.log("food object is:", fObject, " with ", fObject.meals.length, " meals inside");
 
+    
     var numFood = fObject.meals.length; // # of meals suggested
 
     for (var mealCnt = 0; mealCnt < numFood; mealCnt++) {
@@ -88,27 +89,25 @@ function processData(fObject) {
         var mealObj = {};
         mealObj['mName'] = fObject.meals[mealCnt].strMeal;
         mealObj['mInst'] = fObject.meals[mealCnt].strInstructions;
-        mealObj['mPic'] = fObject.meals[mealCnt].strInstructions;
+        mealObj['mPic'] = fObject.meals[mealCnt].strMealThumb;
 
         mealObj['mIngreQty'] = []; // Array to store multiple Ingredients for that same meal
 
-        // Below will retrive an unknown number of ingredients.
-        // Loop thru max 20 ingredients/qty
+
         // Initialize the first ingredent and qty index
         var index = 1;
         var ingre = "strIngredient" + index;
         var ingreQty = "strMeasure" + index;
 
-        // If ingredent field is not blank And searched <= 20
+        // If ingredent field is not blank AND searched <= max 20
         while ((fObject.meals[mealCnt][ingre] != "") && (index <= 20)) {
 
             // create Dict for Ingredient/Qty, on that index (ingredent #)  
             mealObj['mIngreQty'][index] = {};
 
             // assign Ingredient Name, and Qty to this new key/value pair.
-            mealObj['mIngreQty'][index - 1] = { 'mIngre': fObject.meals[mealCnt][ingre], 'mIngreQty': fObject.meals[mealCnt][ingreQty] };
+            mealObj['mIngreQty'][index - 1] = { 'mIngre': fObject.meals[mealCnt][ingre], 'mIQty': fObject.meals[mealCnt][ingreQty] };
             //mealObj['mIngreQty'][index - 1] = { 'mIngreQty': fObject.meals[mealCnt][ingreQty] };
-
 
             index++;
             // New property name base on next index
@@ -117,9 +116,41 @@ function processData(fObject) {
         } // end While
 
         console.log("Exit While, meal number ", mealCnt);
-        console.log("This meal obj is: ", mealObj);
+        console.log("This meal obj is: ", mealObj, index);
+        renderRecipe(mealObj);
     
     }// end For.
+
+
+// Display Food on Food container "foodList"
+function renderRecipe (mealObj) {
+
+    // Display ingredients first
+    var i=0;
+    var iuiList = $("<div>").addClass("ui celled unordered list");
+
+    while ( i <= 10 ) {
+        var inDetail = $("<div>").text(mealObj.mIngreQty[i].mIQty + " " + mealObj.mIngreQty[i].mIngre).addClass("item");
+        iuiList.append(inDetail);
+        i++;
+    }
+    $("#fDetails").append(iuiList);
+
+
+    // Dispaly Dish name and Pic 
+    var fName = $("<h2>").text(mealObj.mName);
+    var fPic = $("<img>").attr("src", mealObj.mPic).addClass("ui fluid image rounded");
+    $("#foodList").append(fName, fPic);
+
+    
+    // Display Instruction on the right
+    var fInst = $("<p>").text(mealObj.mInst).addClass("description");
+    var item = $("<div>").addClass("item");
+    var content = $("<div>").addClass("content");
+    var direction = $("<a>").addClass("header");
+    $("#fInst").append(item,content, direction,fInst);
+
+}
 
 
 
