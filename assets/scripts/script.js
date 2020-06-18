@@ -31,7 +31,7 @@ function showHome() {
 
 //DROPDOWNS Functionality: Food and Drink page
 $('.ui.dropdown')
-  .dropdown();
+    .dropdown();
 
 
 // BUTTON TO SHOW RANDOM DRINK SECTION
@@ -80,7 +80,7 @@ function mealList(event) {
 function processData(fObject) {
     console.log("food object is:", fObject, " with ", fObject.meals.length, " meals inside");
 
-    
+
     var numFood = fObject.meals.length; // # of meals suggested
 
     for (var mealCnt = 0; mealCnt < numFood; mealCnt++) {
@@ -117,40 +117,50 @@ function processData(fObject) {
 
         console.log("Exit While, meal number ", mealCnt);
         console.log("This meal obj is: ", mealObj, index);
-        renderRecipe(mealObj);
-    
+        renderNamePic(mealObj);
     }// end For.
 
+    // Display Food on Food container "foodList"
+    function renderNamePic(mealObj) {
+        var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
+        var fPic = $("<img>").attr("src", mealObj.mPic).addClass("ui fluid image rounded");
+        var fNamePic = $("#foodList").append(fName, fPic).addClass("seven wide column pusher");
+        //var fHeight = $("#foodList").height();
+        renderIng(mealObj, fNamePic);
 
-// Display Food on Food container "foodList"
-function renderRecipe (mealObj) {
-
-    // Display ingredients first
-    var i=0;
-    var iuiList = $("<div>").addClass("ui celled unordered list");
-
-    while ( i <= 10 ) {
-        var inDetail = $("<div>").text(mealObj.mIngreQty[i].mIQty + " " + mealObj.mIngreQty[i].mIngre).addClass("item");
-        iuiList.append(inDetail);
-        i++;
     }
-    $("#fDetails").append(iuiList);
 
+    function renderIng(mealObj, fNamePic) {
+        var i = 0;
+        var iuiList = $("<div>").addClass("ui celled unordered list");
 
-    // Dispaly Dish name and Pic 
-    var fName = $("<h2>").text(mealObj.mName);
-    var fPic = $("<img>").attr("src", mealObj.mPic).addClass("ui fluid image rounded");
-    $("#foodList").append(fName, fPic);
+        while (i <= 10) {
+            var inDetail = $("<div>").text(mealObj.mIngreQty[i].mIQty + " " + mealObj.mIngreQty[i].mIngre).addClass("item");
+            iuiList.append(inDetail);
+            i++;
+        }
+        //$("#fDetails").append(iuiList);
+        renderInst(mealObj, iuiList, fNamePic);
+
+    }
+
+    function renderInst(mealObj, iuiList, fNamePic) {
+        // Display Instruction on the right
+        
+        
+        var item = $("<div>").addClass("item");
+        var content = $("<div>").addClass("content");
+        var direction = $("<a>").text("Directions").addClass("header");
+        var description = $("<div>").addClass("description")
+        var fInst = $("<p>").text(mealObj.mInst);
+        var instC = $("<div>").append(item, content, direction, description,fInst).addClass("ui items");
+
+        var ingInstCon = $("<div>").append(iuiList,instC).addClass("seven wide column row");
+        var mContainer = $("<div>").append(fNamePic, ingInstCon).addClass("three column row");
+        $("#mealResult").append(mContainer);
+    } // end renderInst
 
     
-    // Display Instruction on the right
-    var fInst = $("<p>").text(mealObj.mInst).addClass("description");
-    var item = $("<div>").addClass("item");
-    var content = $("<div>").addClass("content");
-    var direction = $("<a>").addClass("header");
-    $("#fInst").append(item,content, direction,fInst);
-
-}
 
 
 
@@ -174,7 +184,7 @@ function showDrinkPage() {
 
 $('#searchDrink').on('click', drinkList);
 
-function drinkList (event) {
+function drinkList(event) {
     var drinkChoice = $('#drinkInput').val();
     console.log('userInput ' + drinkChoice);
 }
