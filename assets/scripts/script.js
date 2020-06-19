@@ -56,6 +56,13 @@ getRandomDrinkBtn.addEventListener('click', () => {
 	});
 });
 
+$('#foodList').on("click", function() {
+    event.stopPropagation();
+    event.preventDefault();
+    console.log('id = ', $(this).attr("id"));
+    console.log('$this is', $(this));
+})
+
 var createRandomDrink = (drinks) => {
 	var ingredients = [];
 	// Get all ingredients from the object. Up to 15
@@ -177,20 +184,21 @@ function processData(fObject) {
 
         console.log("Exit While, meal number ", mealCnt);
         console.log("This meal obj is: ", mealObj, index);
-        renderNamePic(mealObj, index - 1);
+        renderNamePic(mealObj, index - 1, mealCnt);
     }// end For.
 } // end Process Data
 
 
     // Display Food on Food container "foodList"
-    function renderNamePic(mealObj, ingLen) {
+    function renderNamePic(mealObj, ingLen, mealCnt) {
         var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
         //var fName = $("<h2>").html(mealObj.mName<i></i>);
         var fPic = $("<img>").attr("src", mealObj.mPic).addClass("ui fluid image rounded").css("float","left");
+        fPic.attr("id", mealCnt);
         var nPicCon = $("<div>").append(fName, fPic).addClass("seven wide column pusher");
+        $('#foodList').append(nPicCon).css('display', 'block');
         console.log("Enter renderNamePic");
-        renderIng(mealObj, nPicCon, ingLen);
-
+        //renderIng(mealObj, nPicCon, ingLen);
     }
 
     function renderIng(mealObj, nPicCon, ingLen) {
@@ -228,7 +236,7 @@ function processData(fObject) {
         nPicCon.append(fInst);
         var mContainer = $("<div>").append(nPicCon, iuiList).addClass("three column row");
         console.log("Before the whole mContainer", mContainer);
-        $("#mealResult").append(mContainer).css("display","block");
+        //$("#mealResult").append(mContainer).css("display","block");
 
     } // end renderInst
 
