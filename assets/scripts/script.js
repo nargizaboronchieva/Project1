@@ -16,9 +16,8 @@ document.getElementById("userPage").style.display = "none";
 
 // // Array List of favorite Recipes
 // var arrayR = [];
+var fChoice = []; // choice to be selected
 
-// id="home" button
-// id="homePage" section
 $("#home").on("click", showHome);
 function showHome() {
     console.log("Enter showHome");
@@ -56,12 +55,6 @@ getRandomDrinkBtn.addEventListener('click', () => {
 	});
 });
 
-$('#foodList').on("click", function() {
-    event.stopPropagation();
-    event.preventDefault();
-    console.log('id = ', $(this).attr("id"));
-    console.log('$this is', $(this));
-})
 
 var createRandomDrink = (drinks) => {
 	var ingredients = [];
@@ -149,6 +142,7 @@ function processData(fObject) {
 
 
     var numFood = fObject.meals.length; // # of meals suggested
+    
 
     for (var mealCnt = 0; mealCnt < numFood; mealCnt++) {
 
@@ -184,8 +178,10 @@ function processData(fObject) {
 
         console.log("Exit While, meal number ", mealCnt);
         console.log("This meal obj is: ", mealObj, index);
+        fChoice.push(mealObj);
         renderNamePic(mealObj, index - 1, mealCnt);
     }// end For.
+        console.log("The chocies include in this food array:", fChoice);
 } // end Process Data
 
 
@@ -194,7 +190,10 @@ function processData(fObject) {
         var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
         //var fName = $("<h2>").html(mealObj.mName<i></i>);
         var fPic = $("<img>").attr("src", mealObj.mPic).addClass("ui fluid image rounded").css("float","left");
-        fPic.attr("id", mealCnt);
+        fPic.attr("data-samson", mealCnt);
+        fPic.click(function() {
+            console.log("Clicked on: ", $(this).attr("data-samson"));
+        })
         var nPicCon = $("<div>").append(fName, fPic).addClass("seven wide column pusher");
         $('#foodList').append(nPicCon).css('display', 'block');
         console.log("Enter renderNamePic");
