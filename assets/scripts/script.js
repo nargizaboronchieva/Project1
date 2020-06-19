@@ -171,14 +171,14 @@ function processData(fObject) {
     var ingreQty = "strMeasure" + index;
 
     // If ingredent field is not blank AND searched <= max 20
-    while (fObject.meals[mealCnt][ingre] != "" && index <= 20) {
+    while (fObject.meals[mealCnt][ingre] != "") && (index <= 20) {
       // create Dict for Ingredient/Qty, on that index (ingredent #)
       mealObj["mIngreQty"][index] = {};
 
       // assign Ingredient Name, and Qty to this new key/value pair.
       mealObj["mIngreQty"][index - 1] = {
-        mIngre: fObject.meals[mealCnt][ingre],
-        mIQty: fObject.meals[mealCnt][ingreQty],
+        'mIngre': fObject.meals[mealCnt][ingre],
+        'mIQty': fObject.meals[mealCnt][ingreQty]
       };
       //mealObj['mIngreQty'][index - 1] = { 'mIngreQty': fObject.meals[mealCnt][ingreQty] };
 
