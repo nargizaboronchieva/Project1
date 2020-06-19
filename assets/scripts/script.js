@@ -120,34 +120,39 @@ function processData(fObject) {
 
         console.log("Exit While, meal number ", mealCnt);
         console.log("This meal obj is: ", mealObj, index);
-        renderNamePic(mealObj);
+        renderNamePic(mealObj, index - 1);
     }// end For.
+} // end Process Data
+
 
     // Display Food on Food container "foodList"
-    function renderNamePic(mealObj) {
+    function renderNamePic(mealObj, ingLen) {
         var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
-        var fPic = $("<img>").attr("src", mealObj.mPic).addClass("ui fluid image rounded");
-        var fNamePic = $("#foodList").append(fName, fPic).addClass("seven wide column pusher");
-        //var fHeight = $("#foodList").height();
-        renderIng(mealObj, fNamePic);
+        //var fName = $("<h2>").html(mealObj.mName<i></i>);
+        var fPic = $("<img>").attr("src", mealObj.mPic).addClass("ui fluid image rounded").css("float","left");
+        var nPicCon = $("<div>").append(fName, fPic).addClass("seven wide column pusher");
+        console.log("Enter renderNamePic");
+        renderIng(mealObj, nPicCon, ingLen);
 
     }
 
-    function renderIng(mealObj, fNamePic) {
+    function renderIng(mealObj, nPicCon, ingLen) {
         var i = 0;
         var iuiList = $("<div>").addClass("ui celled unordered list");
 
-        while (i <= 10) {
+        // var ingLen = mealObj.mIngreQty.length;
+        console.log("Ingredent length: ", ingLen);
+        while (i < ingLen) {
             var inDetail = $("<div>").text(mealObj.mIngreQty[i].mIQty + " " + mealObj.mIngreQty[i].mIngre).addClass("item");
             iuiList.append(inDetail);
             i++;
         }
-        //$("#fDetails").append(iuiList);
-        renderInst(mealObj, iuiList, fNamePic);
+        console.log("completed renderIng");
+        renderInst(mealObj, iuiList, nPicCon);
 
     }
 
-    function renderInst(mealObj, iuiList, fNamePic) {
+    function renderInst(mealObj, iuiList, nPicCon) {
         // Display Instruction on the right
         
         
@@ -157,26 +162,20 @@ function processData(fObject) {
         var description = $("<div>").addClass("description")
         var fInst = $("<p>").text(mealObj.mInst);
         var instC = $("<div>").append(item, content, direction, description,fInst).addClass("ui items");
+        
+        //var ingInstCon = $("<div>").append(iuiList,instC).addClass("seven wide column row");
+        //var mContainer = $("<div>").append(nPicCon, ingInstCon).addClass("three column row");
+        //var mContainer = $("<div>").append(nPicCon, iuiList,instC).addClass("three column row");
 
-        var ingInstCon = $("<div>").append(iuiList,instC).addClass("seven wide column row");
-        var mContainer = $("<div>").append(fNamePic, ingInstCon).addClass("three column row");
-        $("#mealResult").append(mContainer);
+
+        nPicCon.append(fInst);
+        var mContainer = $("<div>").append(nPicCon, iuiList).addClass("three column row");
+        console.log("Before the whole mContainer", mContainer);
+        $("#mealResult").append(mContainer).css("display","block");
+
     } // end renderInst
 
-    
 
-
-
-
-
-    // After received results, call mealListRender() for each one
-} // end Process Data
-
-
-
-// SHOW DRINK MAIN PAGE
-// id="drink" button
-// id="drinkPage" section
 $("#drink").on("click", showDrinkPage);
 function showDrinkPage() {
     document.getElementById("homePage").style.display = "none";
