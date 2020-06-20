@@ -43,66 +43,57 @@ $(".ui.dropdown").dropdown();
 // ***** FOR NARGIZA'S CODE FOR RANDOM DRINK start
 // var randomDrinkArr=["collins","martini","oldFashion","shots","masonJar","margarita"];
 
-var getRandomDrinkBtn = document.getElementById("collins");
-var getRandomDrinkContainer = document.getElementById("randomDrinkResult");
 
-getRandomDrinkBtn.addEventListener("click", () => {
-  fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-    .then((res) => res.json())
-    .then((res) => {
-      createRandomDrink(res.drinks[0]);
-    });
+var getRandomDrinkContainer = document.getElementById('randomDrinkResult');
+
+$(".glassItem").on('click', function (e) {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php') 
+    	.then(res => res.json())
+		.then(res => {
+		createRandomDrink(res.drinks[0]);
+	});
 });
 
 var createRandomDrink = (drinks) => {
-  var ingredients = [];
-  // Get all ingredients from the object. Up to 15
-  for (let i = 1; i <= 15; i++) {
-    if (drinks[`strIngredient${i}`]) {
-      ingredients.push(
-        `${drinks[`strIngredient${i}`]} - ${drinks[`strMeasure${i}`]}`
-      );
-    } else {
-      // Stop if no more ingredients
-      break;
-    }
-    document.getElementById("homePage").style.display = "block";
-    document.getElementById("foodPage").style.display = "none";
-    document.getElementById("drinkPage").style.display = "none";
-    document.getElementById("userPage").style.display = "none";
-    document.getElementById("headingStyle").style.display = "none";
-    document.getElementById("moodText").style.display = "none";
-    // document.getElementById("glassContainer").style.display = "none";
-  }
-
-  var newInnerHTML = `
+	var ingredients = [];
+	// Get all ingredients from the object. Up to 15
+	for(let i=1; i<=15; i++) {
+		if(drinks[`strIngredient${i}`]) {
+			ingredients.push(`${drinks[`strIngredient${i}`]} - ${drinks[`strMeasure${i}`]}`)
+		} else {
+			// Stop if no more ingredients
+			break;
+        }
+        document.getElementById("homePage").style.display = "block";
+        document.getElementById("foodPage").style.display = "none";
+        document.getElementById("drinkPage").style.display = "none";
+        document.getElementById("userPage").style.display = "none";
+        document.getElementById("headingStyle").style.display = "none";
+        // document.getElementById("moodText").style.display = "none";
+        // document.getElementById("glassContainer").style.display = "none";
+	}
+	
+	var newInnerHTML = `
 		<div class="row">
 			<div>
 				<img src="${drinks.strDrinkThumb}" alt="drinks Image">
-				${
-          drinks.strCategory
-            ? `<p><strong>Category:</strong> ${drinks.strCategory}</p>`
-            : ""
-        }
-                ${
-                  drinks.strGlass
-                    ? `<p><strong>Glass Type:</strong> ${drinks.strGlass}</p>`
-                    : ""
-                }
+                <h1>${drinks.strDrink}</h1>
+                ${drinks.strCategory ? `<p><strong>Category:</strong> ${drinks.strCategory}</p>` : ''}
+                ${drinks.strGlass ? `<p><strong>Glass Type:</strong> ${drinks.strGlass}</p>` : ''}
 				<h5>Ingredients:</h5>
 				<ul>
-					${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")}
+					${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
 				</ul>
 			</div>
 			<div>
-				<h2>${drinks.strDrink}</h2>
+				
 				<p>${drinks.strInstructions}</p>
 			</div>
 		</div>
 	`;
-
-  getRandomDrinkContainer.innerHTML = newInnerHTML;
-};
+	
+	getRandomDrinkContainer.innerHTML = newInnerHTML;
+}
 
 //END OF NARGIZAS CODING
 
@@ -171,7 +162,7 @@ function processData(fObject) {
     var ingreQty = "strMeasure" + index;
 
     // If ingredent field is not blank AND searched <= max 20
-    while (fObject.meals[mealCnt][ingre] != "") && (index <= 20) {
+    while ((fObject.meals[mealCnt][ingre] != "") && (index <= 20)) {
       // create Dict for Ingredient/Qty, on that index (ingredent #)
       mealObj["mIngreQty"][index] = {};
 
