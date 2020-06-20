@@ -1,10 +1,3 @@
-// NAVIGATION FUNCTIONALITY
-// Initial document set to show home page
-document.getElementById("homePage").style.display = "block";
-document.getElementById("foodPage").style.display = "none";
-document.getElementById("drinkPage").style.display = "none";
-document.getElementById("userPage").style.display = "none";
-
 // SHOW HOME PAGE
 // Data structure of each single meal
 // var mealObj = {
