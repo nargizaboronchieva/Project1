@@ -10,13 +10,16 @@ document.getElementById("userPage").style.display = "none";
 // var mealObj = {
 //     mName:"Fried Chicken",
 //     mRecipe:"",
-//     mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],
-//     mPic:""
+//     mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],  <- ingredientName, Quantity
+//     mPic:"",     < Meal Pic
+//     mIngLen,     <- Number of Ingredent used in FOR loop
+//     mID          <- Index the meal to retreive in array
 // }
 
 // // Array List of favorite Recipes
 // var arrayR = [];
 var fChoice = []; // choice to be selected
+var mealDetail;  
 
 $("#home").on("click", showHome);
 function showHome() {
@@ -134,7 +137,12 @@ $("#searchMeal").on("click", mealList);
 function mealList(event) {
   //get user meal input
   var mealChoice = $("#mealInput").val();
+  mealDetail=false;
+
   console.log("User input", mealChoice);
+
+  // Clear any previous displayed items
+  //$("#foodList").empty();
 
   var fURL =
     "https://www.themealdb.com/api/json/v1/1/search.php?s=" + mealChoice;
@@ -162,8 +170,8 @@ function processData(fObject) {
     mealObj["mName"] = fObject.meals[mealCnt].strMeal;
     mealObj["mInst"] = fObject.meals[mealCnt].strInstructions;
     mealObj["mPic"] = fObject.meals[mealCnt].strMealThumb;
-
     mealObj["mIngreQty"] = []; // Array to store multiple Ingredients for that same meal
+    mealObj["mID"] = mealCnt;
 
     // Initialize the first ingredent and qty index
     var index = 1;
@@ -171,7 +179,7 @@ function processData(fObject) {
     var ingreQty = "strMeasure" + index;
 
     // If ingredent field is not blank AND searched <= max 20
-    while (fObject.meals[mealCnt][ingre] != "") && (index <= 20) {
+    while ((fObject.meals[mealCnt][ingre] != "") && (index <= 20)) {
       // create Dict for Ingredient/Qty, on that index (ingredent #)
       mealObj["mIngreQty"][index] = {};
 
@@ -180,7 +188,6 @@ function processData(fObject) {
         'mIngre': fObject.meals[mealCnt][ingre],
         'mIQty': fObject.meals[mealCnt][ingreQty]
       };
-      //mealObj['mIngreQty'][index - 1] = { 'mIngreQty': fObject.meals[mealCnt][ingreQty] };
 
       index++;
       // New property name base on next index
@@ -188,50 +195,59 @@ function processData(fObject) {
       var ingreQty = "strMeasure" + index;
     } // end While
 
-    console.log("Exit While, meal number ", mealCnt);
-    console.log("This meal obj is: ", mealObj, index);
+    console.log("This meal obj is: ", mealObj, mealObj.mID);
+    mealObj["mIngLen"] = index-1;  // Assign # of ingredents used in this meal to mIngLen
     fChoice.push(mealObj);
-    renderNamePic(mealObj, index - 1, mealCnt);
+    renderNamePic(mealObj);
   } // end For.
-  console.log("The chocies include in this food array:", fChoice);
+  console.log("The Suggested Chocies include in this food array:", fChoice);
 } // end Process Data
 
 // Display Food on Food container "foodList"
-function renderNamePic(mealObj, ingLen, mealCnt) {
+function renderNamePic(mealObj) {
   var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
-  //var fName = $("<h2>").html(mealObj.mName<i></i>);
   var fPic = $("<img>")
     .attr("src", mealObj.mPic)
     .addClass("ui fluid image rounded")
     .css("float", "left");
-  fPic.attr("data-samson", mealCnt);
+  
+  fPic.attr("data-index", mealObj.mID);
   fPic.click(function () {
-    console.log("Clicked on: ", $(this).attr("data-samson"));
+    mealDetail = true;
+    console.log("Clicked on: ", $(this).attr("data-index"));
+    renderNamePic(fChoice[$(this).attr("data-index")]);
   });
   var nPicCon = $("<div>")
     .append(fName, fPic)
     .addClass("seven wide column pusher");
+
+  console.log("Enter renderNamePic, nPicCon is ", nPicCon);
   $("#foodList").append(nPicCon).css("display", "block");
-  console.log("Enter renderNamePic");
-  //renderIng(mealObj, nPicCon, ingLen);
+  
+
+  if (mealDetail == true) {
+    $("#mealResult").empty();
+    renderIng(mealObj, nPicCon);
+    mealDetail = false;
+  }
+  
 }
 
-function renderIng(mealObj, nPicCon, ingLen) {
+function renderIng(mealObj, nPicCon) {
   var i = 0;
   var iuiList = $("<div>").addClass("ui celled unordered list");
 
-  // var ingLen = mealObj.mIngreQty.length;
-  console.log("Ingredent length: ", ingLen);
-  while (i < ingLen) {
+  console.log("Ingredent length: ", mealObj.mIngLen);
+  while (i < mealObj.mIngLen) {
     var inDetail = $("<div>")
       .text(mealObj.mIngreQty[i].mIQty + " " + mealObj.mIngreQty[i].mIngre)
       .addClass("item");
     iuiList.append(inDetail);
     i++;
   }
-  console.log("completed renderIng");
+
   renderInst(mealObj, iuiList, nPicCon);
-}
+} // end renderIng
 
 function renderInst(mealObj, iuiList, nPicCon) {
   // Display Instruction on the right
@@ -254,8 +270,12 @@ function renderInst(mealObj, iuiList, nPicCon) {
     .append(nPicCon, iuiList)
     .addClass("three column row");
   console.log("Before the whole mContainer", mContainer);
-  //$("#mealResult").append(mContainer).css("display","block");
+  $("#mealResult").append(mContainer).css("display","block");
+
 } // end renderInst
+
+
+//######################## DRINK Section ##########################//
 
 $("#drink").on("click", showDrinkPage);
 function showDrinkPage() {
