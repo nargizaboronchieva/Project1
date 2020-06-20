@@ -159,7 +159,6 @@ function renderNamePic(mealObj) {
     .append(fName, fPic)
     .addClass("seven wide column pusher");
 
-  console.log("Enter renderNamePic, nPicCon is ", nPicCon);
   $("#foodList").append(nPicCon).css("display", "block");
 
   if (mealDetail == true) {
@@ -189,7 +188,6 @@ function renderIng(mealObj, nPicCon) {
   var i = 0;
   var iuiList = $("<div>").addClass("ui celled unordered list");
 
-  console.log("Ingredent length: ", mealObj.mIngLen);
   while (i < mealObj.mIngLen) {
     var inDetail = $("<div>")
       .text(mealObj.mIngreQty[i].mIQty + " " + mealObj.mIngreQty[i].mIngre)
