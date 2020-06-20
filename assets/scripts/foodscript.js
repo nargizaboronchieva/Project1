@@ -49,17 +49,6 @@ function showFoodPage() {
 // Listener for Meal Search
 $("#searchMeal").on("click", mealList);
 
-$("#goBack").on("click", backToResult);
-
-function backToResult() {
-  //$("#detailCon").remove();
-  console.log("Meal result before: ", $("#mealResult").length);
-  $("#mealResult").empty();
-  console.log("Meal result after: ", $("#mealResult").length);
-  mealList();
-}
-
-
 // API call to retrieve Receipe Name, instruction, pic, quantity
 function mealList(event) {
   //get user meal input
@@ -68,9 +57,6 @@ function mealList(event) {
   mealDetail = false;
 
   console.log("User input", mealChoice);
-
-  // Clear any previous displayed items
-  //$("#foodList").empty();
 
   var fURL =
     "https://www.themealdb.com/api/json/v1/1/search.php?s=" + mealChoice;
@@ -81,6 +67,8 @@ function mealList(event) {
   }).then(processData);
 } // end mealList
 
+
+// Construct a food object that has all attributes.
 function processData(fObject) {
   console.log(
     "food object is:",
@@ -91,7 +79,8 @@ function processData(fObject) {
   );
 
   var numFood = fObject.meals.length; // # of meals suggested
-
+  $("#foodList").empty();
+  fChoice=[];
   for (var mealCnt = 0; mealCnt < numFood; mealCnt++) {
     //Create new mealObj
     var mealObj = {};
@@ -147,9 +136,7 @@ function pIngredient(fObject, mealObj, mealCnt, index) {
 } // end pIngredient
 
 
-
-
-// Display Food on Food container "foodList"
+// Display Food on Food container "foodList".
 function renderNamePic(mealObj) {
   var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
 
@@ -176,7 +163,8 @@ function renderNamePic(mealObj) {
   $("#foodList").append(nPicCon).css("display", "block");
 
   if (mealDetail == true) {
-    $("#mealResult").empty();
+    console.log("meal Detail should be True ,let check:", mealDetail)
+    //$("#mealResult").empty();
     renderIng(mealObj, nPicCon);
     mealDetail = false;
   }
@@ -186,16 +174,12 @@ function renderNamePic(mealObj) {
   // mealObj associated with clicked item is pushed to local storage object array
   //Local Storage object array is used to populate User Page, Food ID = object array position
   //User clicks on food item from User Page, 
-  //var localStorageID = $(this).attr('id');
-  //localStorageID = mealObj.mID;
   starIcon.on('click', function () {
     //var mealHistory = []; //array of saved meal objects....  
     mealHistory.push(mealObj);
     console.log('This is the mealObj position ', mealObj.mID);
     starIcon.css('color', 'orange');
-    //localStorage.setItem('userRecipes', JSON.stringify(mealObj[localStorageID]));
     localStorage.setItem('userRecipes', JSON.stringify(mealHistory));
-    //console.log('This ID is ', localStorageID);
     console.log("Meal History so far:", mealHistory);
   }); // end starIcon
 
@@ -233,7 +217,8 @@ function renderInst(mealObj, iuiList, nPicCon) {
     .addClass("three column row")
     .attr("id", "detailCon");
   console.log("Before the whole mContainer", mContainer);
-  $("#mealResult").append(mContainer).css("display", "block");
+  //$("#mealResult").empty().append(mContainer).css("display", "block");
+  $("#foodList").empty().append(mContainer).css("display", "block");
   console.log("Final Meal History so far:", mealHistory);
 
 } // end renderInst
