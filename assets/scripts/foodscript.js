@@ -19,7 +19,8 @@ document.getElementById("userPage").style.display = "none";
 // // Array List of favorite Recipes
 // var arrayR = [];
 var fChoice = []; // choice to be selected
-var mealDetail;  
+var mealHistory = []; //array of saved meal objects....
+var mealDetail;
 
 $("#home").on("click", showHome);
 function showHome() {
@@ -43,14 +44,28 @@ function showFoodPage() {
   document.getElementById("userPage").style.display = "none";
 }
 
+
+
 // Listener for Meal Search
 $("#searchMeal").on("click", mealList);
+
+$("#goBack").on("click", backToResult);
+
+function backToResult() {
+  //$("#detailCon").remove();
+  console.log("Meal result before: ", $("#mealResult").length);
+  $("#mealResult").empty();
+  console.log("Meal result after: ", $("#mealResult").length);
+  mealList();
+}
+
 
 // API call to retrieve Receipe Name, instruction, pic, quantity
 function mealList(event) {
   //get user meal input
+
   var mealChoice = $("#mealInput").val();
-  mealDetail=false;
+  mealDetail = false;
 
   console.log("User input", mealChoice);
 
@@ -91,15 +106,16 @@ function processData(fObject) {
     var index = 1;
 
     // process and add all Ingredients in the obj. Return # of ingredients.
-    var ingLen = pIngredient(fObject, mealObj,mealCnt, index);
+    var ingLen = pIngredient(fObject, mealObj, mealCnt, index);
 
-    mealObj["mIngLen"] = ingLen; 
+    mealObj["mIngLen"] = ingLen;
     console.log("This meal obj is: ", mealObj, mealObj.mID, ingLen);
 
-    // save the list of objects in the foodChoice array. Allow LS and detail retrieve
     fChoice.push(mealObj);
     renderNamePic(mealObj);
   } // end For.
+
+  // fChoice array now have the list of completed objects. 
   console.log("The Suggested Chocies include in this food array:", fChoice);
 } // end Process Data
 
@@ -127,7 +143,7 @@ function pIngredient(fObject, mealObj, mealCnt, index) {
   } // end While
 
   // Return number of ingredients in this meal
-  return (index-1);
+  return (index - 1);
 } // end pIngredient
 
 
@@ -136,11 +152,15 @@ function pIngredient(fObject, mealObj, mealCnt, index) {
 // Display Food on Food container "foodList"
 function renderNamePic(mealObj) {
   var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
+
+  var starIcon = $("<i>").attr({ class: "right floated star icon", id: mealObj.mID });
+  fName.append(starIcon);
+
   var fPic = $("<img>")
     .attr("src", mealObj.mPic)
     .addClass("ui fluid image rounded")
     .css("float", "left");
-  
+
   fPic.attr("data-index", mealObj.mID);
   fPic.click(function () {
     mealDetail = true;
@@ -154,14 +174,32 @@ function renderNamePic(mealObj) {
 
   console.log("Enter renderNamePic, nPicCon is ", nPicCon);
   $("#foodList").append(nPicCon).css("display", "block");
-  
+
   if (mealDetail == true) {
     $("#mealResult").empty();
     renderIng(mealObj, nPicCon);
     mealDetail = false;
   }
-  
-}
+
+  // Local Storage
+  // User clicks star
+  // mealObj associated with clicked item is pushed to local storage object array
+  //Local Storage object array is used to populate User Page, Food ID = object array position
+  //User clicks on food item from User Page, 
+  //var localStorageID = $(this).attr('id');
+  //localStorageID = mealObj.mID;
+  starIcon.on('click', function () {
+    //var mealHistory = []; //array of saved meal objects....  
+    mealHistory.push(mealObj);
+    console.log('This is the mealObj position ', mealObj.mID);
+    starIcon.css('color', 'orange');
+    //localStorage.setItem('userRecipes', JSON.stringify(mealObj[localStorageID]));
+    localStorage.setItem('userRecipes', JSON.stringify(mealHistory));
+    //console.log('This ID is ', localStorageID);
+    console.log("Meal History so far:", mealHistory);
+  }); // end starIcon
+
+} // end renderNamePic
 
 function renderIng(mealObj, nPicCon) {
   var i = 0;
@@ -183,14 +221,7 @@ function renderIng(mealObj, nPicCon) {
 function renderInst(mealObj, iuiList, nPicCon) {
   // Display Instruction on the right
 
-  var item = $("<div>").addClass("item");
-  var content = $("<div>").addClass("content");
-  var direction = $("<a>").text("Directions").addClass("header");
-  var description = $("<div>").addClass("description");
   var fInst = $("<p>").text(mealObj.mInst);
-  var instC = $("<div>")
-    .append(item, content, direction, description, fInst)
-    .addClass("ui items");
 
   //var ingInstCon = $("<div>").append(iuiList,instC).addClass("seven wide column row");
   //var mContainer = $("<div>").append(nPicCon, ingInstCon).addClass("three column row");
@@ -199,9 +230,11 @@ function renderInst(mealObj, iuiList, nPicCon) {
   nPicCon.append(fInst);
   var mContainer = $("<div>")
     .append(nPicCon, iuiList)
-    .addClass("three column row");
+    .addClass("three column row")
+    .attr("id", "detailCon");
   console.log("Before the whole mContainer", mContainer);
-  $("#mealResult").append(mContainer).css("display","block");
+  $("#mealResult").append(mContainer).css("display", "block");
+  console.log("Final Meal History so far:", mealHistory);
 
 } // end renderInst
 
@@ -213,3 +246,4 @@ function showUserProfile() {
   document.getElementById("drinkPage").style.display = "none";
   document.getElementById("userPage").style.display = "block";
 }
+
