@@ -296,6 +296,7 @@ document.addEventListener("click", function (event) {
   var drink = drinks[drinkIndex];
   console.log(drink);
   // 3. display the modal
+  displayDrink(drink);
 });
 
 function drinkList(event) {
@@ -328,9 +329,9 @@ function displayDrinkList() {
     `);
   });
 }
-function displayDrink(data) {
+function displayDrink(drink) {
   //grab photo from data and attr on page
-  var drink = data.drinks[0];
+  // var drink = data.drinks[0];
   var drinkImage = drink.strDrinkThumb;
   $("#drinkImage").attr("src", drinkImage);
   // grab instruction from data and .text it to page
