@@ -168,7 +168,7 @@ function renderNamePic(mealObj) {
     mealDetail = false;
   }
 
-  // Local Storage
+  // Local Storage.
   // User clicks star
   // mealObj associated with clicked item is pushed to local storage object array
   //Local Storage object array is used to populate User Page, Food ID = object array position
