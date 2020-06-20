@@ -34,80 +34,80 @@ function showHome() {
 //DROPDOWNS Functionality: Food and Drink page
 $(".ui.dropdown").dropdown();
 
-// ***** FOR NARGIZA TO EDIT
+// // ***** FOR NARGIZA TO EDIT
 
-// BUTTON TO SHOW RANDOM DRINK SECTION
-// id="randomGlass" section on load
-// id="randomDrink" section after clicks
+// // BUTTON TO SHOW RANDOM DRINK SECTION
+// // id="randomGlass" section on load
+// // id="randomDrink" section after clicks
 
-// SHOW RANDOM DRINK SECTION
-// button
-// id="randomDrink"
-// ***** FOR NARGIZA'S CODE FOR RANDOM DRINK start
-// var randomDrinkArr=["collins","martini","oldFashion","shots","masonJar","margarita"];
+// // SHOW RANDOM DRINK SECTION
+// // button
+// // id="randomDrink"
+// // ***** FOR NARGIZA'S CODE FOR RANDOM DRINK start
+// // var randomDrinkArr=["collins","martini","oldFashion","shots","masonJar","margarita"];
 
-var getRandomDrinkContainer = document.getElementById("randomDrinkResult");
+// var getRandomDrinkContainer = document.getElementById("randomDrinkResult");
 
-$(".glassItem").on("click", function (e) {
-  fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-    .then((res) => res.json())
-    .then((res) => {
-      createRandomDrink(res.drinks[0]);
-    });
-});
+// $(".glassItem").on("click", function (e) {
+//   fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+//     .then((res) => res.json())
+//     .then((res) => {
+//       createRandomDrink(res.drinks[0]);
+//     });
+// });
 
-var createRandomDrink = (drinks) => {
-  var ingredients = [];
-  // Get all ingredients from the object. Up to 15
-  for (let i = 1; i <= 15; i++) {
-    if (drinks[`strIngredient${i}`]) {
-      ingredients.push(
-        `${drinks[`strIngredient${i}`]} - ${drinks[`strMeasure${i}`]}`
-      );
-    } else {
-      // Stop if no more ingredients
-      break;
-    }
-    document.getElementById("homePage").style.display = "block";
-    document.getElementById("foodPage").style.display = "none";
-    document.getElementById("drinkPage").style.display = "none";
-    document.getElementById("userPage").style.display = "none";
-    document.getElementById("headingStyle").style.display = "none";
-    // document.getElementById("moodText").style.display = "none";
-    // document.getElementById("glassContainer").style.display = "none";
-  }
+// var createRandomDrink = (drinks) => {
+//   var ingredients = [];
+//   // Get all ingredients from the object. Up to 15
+//   for (let i = 1; i <= 15; i++) {
+//     if (drinks[`strIngredient${i}`]) {
+//       ingredients.push(
+//         `${drinks[`strIngredient${i}`]} - ${drinks[`strMeasure${i}`]}`
+//       );
+//     } else {
+//       // Stop if no more ingredients
+//       break;
+//     }
+//     document.getElementById("homePage").style.display = "block";
+//     document.getElementById("foodPage").style.display = "none";
+//     document.getElementById("drinkPage").style.display = "none";
+//     document.getElementById("userPage").style.display = "none";
+//     document.getElementById("headingStyle").style.display = "none";
+//     // document.getElementById("moodText").style.display = "none";
+//     // document.getElementById("glassContainer").style.display = "none";
+//   }
 
-  var newInnerHTML = `
-		<div class="row">
-			<div>
-				<img src="${drinks.strDrinkThumb}" alt="drinks Image">
-                <h1>${drinks.strDrink}</h1>
-                ${
-                  drinks.strCategory
-                    ? `<p><strong>Category:</strong> ${drinks.strCategory}</p>`
-                    : ""
-                }
-                ${
-                  drinks.strGlass
-                    ? `<p><strong>Glass Type:</strong> ${drinks.strGlass}</p>`
-                    : ""
-                }
-				<h5>Ingredients:</h5>
-				<ul>
-					${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")}
-				</ul>
-			</div>
-			<div>
+//   var newInnerHTML = `
+// 		<div class="row">
+// 			<div>
+// 				<img src="${drinks.strDrinkThumb}" alt="drinks Image">
+//                 <h1>${drinks.strDrink}</h1>
+//                 ${
+//                   drinks.strCategory
+//                     ? `<p><strong>Category:</strong> ${drinks.strCategory}</p>`
+//                     : ""
+//                 }
+//                 ${
+//                   drinks.strGlass
+//                     ? `<p><strong>Glass Type:</strong> ${drinks.strGlass}</p>`
+//                     : ""
+//                 }
+// 				<h5>Ingredients:</h5>
+// 				<ul>
+// 					${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")}
+// 				</ul>
+// 			</div>
+// 			<div>
 				
-				<p>${drinks.strInstructions}</p>
-			</div>
-		</div>
-	`;
+// 				<p>${drinks.strInstructions}</p>
+// 			</div>
+// 		</div>
+// 	`;
 
-  getRandomDrinkContainer.innerHTML = newInnerHTML;
-};
+//   getRandomDrinkContainer.innerHTML = newInnerHTML;
+// };
 
-//END OF NARGIZAS CODING
+// //END OF NARGIZAS CODING
 
 // Function to show recipe card
 function showRandomDrinkSection() {
