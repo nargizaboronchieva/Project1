@@ -128,7 +128,6 @@ function pIngredient(fObject, mealObj, mealCnt, index) {
   return (index - 1);
 } // end pIngredient
 
-
 // Display Food on Food container "foodList".
 function renderNamePic(mealObj) {
   var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
@@ -162,20 +161,48 @@ function renderNamePic(mealObj) {
   }
 
   // Local Storage.
-  // User clicks star
-  // mealObj associated with clicked item is pushed to local storage object array
-  //Local Storage object array is used to populate User Page, Food ID = object array position
-  //User clicks on food item from User Page, 
+  // 1. User clicks star
+  // 2. mealObj associated with clicked item is pushed to local storage object array
   starIcon.on('click', function () {
-    //var mealHistory = []; //array of saved meal objects....  
-    mealHistory.push(mealObj);
-    console.log('This is the mealObj position ', mealObj.mID);
+     //Local Storage Array to hold all saved meals
+     if(mealHistory.indexOf(mealObj) === -1){
+      mealHistory.push(mealObj);
+    }
+    console.log('This is the selected mealObj position ', mealObj.mID);
     starIcon.css('color', 'orange');
     localStorage.setItem('userRecipes', JSON.stringify(mealHistory));
-    console.log("Meal History so far:", mealHistory);
-  }); // end starIcon
+    console.log("Meal History so far: ", mealHistory);
+  }); // end starIcon Local Storage
 
 } // end renderNamePic
+
+//User menu button click starts renderMealHistory function
+$('#user').click(function(){
+    $('#savedFoodList').empty();
+
+  console.log('User icon clicked - enter function');
+  //Function to render user pag
+  var storedMealName = JSON.parse(localStorage.getItem('userRecipes'));
+  console.log('This is userRecipes array', storedMealName);
+  if (storedMealName) {
+    for (i = 0; i < storedMealName.length; i++) {
+      //Retrieve data from local storage
+      var recipeTitle = storedMealName[i].mName;
+      console.log('Saved recipe title ' + i + ' is ' + recipeTitle);
+      var recipeImage = storedMealName[i].mPic;
+      console.log('Saved recipe pic ' + i + ' is ' + recipeImage);
+
+      //Build saved recipe page
+      var mainCardContainer = $('<div>').attr({class: 'column', id: i}).appendTo('#savedFoodList');
+      var column = $('<div>').attr('class', 'ui fluid card').appendTo(mainCardContainer);
+      var cardImageDiv = $('<div>').attr('class', 'image').appendTo(column);
+      $('<img>').attr('src', recipeImage).appendTo(cardImageDiv);
+      var recipeTitleDiv = $('<div>').attr('class', 'content').appendTo(column);
+      $('<p>').attr('class', 'header').text(recipeTitle).appendTo(recipeTitleDiv);
+    }
+  }
+});
+//
 
 function renderIng(mealObj, nPicCon) {
   var i = 0;
