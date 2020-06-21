@@ -73,7 +73,7 @@ function processData(fObject) {
 
   var numFood = fObject.meals.length; // # of meals suggested
   $("#foodList").empty();
-  fChoice=[];
+  fChoice = [];
   for (var mealCnt = 0; mealCnt < numFood; mealCnt++) {
     //Create new mealObj
     var mealObj = {};
@@ -130,6 +130,7 @@ function pIngredient(fObject, mealObj, mealCnt, index) {
 
 // Display Food on Food container "foodList".
 function renderNamePic(mealObj) {
+  console.log('The renderNamePic function mealObj is: ', mealObj);
   var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
 
   var starIcon = $("<i>").attr({ class: "right floated star icon", id: mealObj.mID });
@@ -151,6 +152,7 @@ function renderNamePic(mealObj) {
     .append(fName, fPic)
     .addClass("seven wide column pusher");
 
+  $("#mealResult").css("display", "block");
   $("#foodList").append(nPicCon).css("display", "block");
 
   if (mealDetail == true) {
@@ -164,45 +166,94 @@ function renderNamePic(mealObj) {
   // 1. User clicks star
   // 2. mealObj associated with clicked item is pushed to local storage object array
   starIcon.on('click', function () {
-     //Local Storage Array to hold all saved meals
-     if(mealHistory.indexOf(mealObj) === -1){
+    //Local Storage Array to hold all saved meals
+    if (mealHistory.indexOf(mealObj) === -1) {
       mealHistory.push(mealObj);
     }
     console.log('This is the selected mealObj position ', mealObj.mID);
     starIcon.css('color', 'orange');
     localStorage.setItem('userRecipes', JSON.stringify(mealHistory));
     console.log("Meal History so far: ", mealHistory);
-  }); // end starIcon Local Storage
+  }); //END SET LOCAL STORAGE FOR STARRED MEALS FUNCTION
 
 } // end renderNamePic
 
 //User menu button click starts renderMealHistory function
-$('#user').click(function(){
-    $('#savedFoodList').empty();
+$('#user').click(function () {
+  $('#mealResult').empty();
+  $('#foodList').empty();
+  $('#savedFoodList').empty();
 
   console.log('User icon clicked - enter function');
-  //Function to render user pag
+  //Function to render user page
   var storedMealName = JSON.parse(localStorage.getItem('userRecipes'));
   console.log('This is userRecipes array', storedMealName);
   if (storedMealName) {
     for (i = 0; i < storedMealName.length; i++) {
-      //Retrieve data from local storage
+      //1. Retrieve data from local storage
+        console.log('The storedMealName ' + i + ' = ' + storedMealName[i]);
       var recipeTitle = storedMealName[i].mName;
-      console.log('Saved recipe title ' + i + ' is ' + recipeTitle);
+        console.log('Saved recipe title ' + i + ' is ' + recipeTitle);
       var recipeImage = storedMealName[i].mPic;
-      console.log('Saved recipe pic ' + i + ' is ' + recipeImage);
+        console.log('Saved recipe pic ' + i + ' is ' + recipeImage);
 
-      //Build saved recipe page
-      var mainCardContainer = $('<div>').attr({class: 'column', id: i}).appendTo('#savedFoodList');
+      //2. Build saved recipe page
+      var mainCardContainer = $('<div>').attr('class', 'column').appendTo('#savedFoodList');
       var column = $('<div>').attr('class', 'ui fluid card').appendTo(mainCardContainer);
       var cardImageDiv = $('<div>').attr('class', 'image').appendTo(column);
-      $('<img>').attr('src', recipeImage).appendTo(cardImageDiv);
+      var cardImage = $('<img>').attr({ src: recipeImage, id: i });
+      cardImage.attr('data-index', i).appendTo(cardImageDiv);
       var recipeTitleDiv = $('<div>').attr('class', 'content').appendTo(column);
       $('<p>').attr('class', 'header').text(recipeTitle).appendTo(recipeTitleDiv);
     }
   }
-});
-//
+});//END SAVED MEALS LIST DISPLAY FUNCTION
+
+//Display Recipe when user clicks image from User Page - MODAL
+$('#savedFoodList').click(function () {
+  //Clear the container
+  $('#savedFoodList').empty();
+  //1. Capture id (recipe index in saved recipe array) from clicked recipe card
+  selectedFoodItem = event.target.id;
+    console.log('The image has been clicked');
+    console.log('This is the selectedFoodItem value: ', selectedFoodItem);
+  //2. Retrieve the meal object containing all necessary information from local storage
+  var storedMealName = JSON.parse(localStorage.getItem('userRecipes'));
+  selectedRecipeCard = storedMealName[selectedFoodItem];
+    console.log('The selected recipe object is: ', selectedRecipeCard);
+  //3. Build the recipe on the page
+  //3a. Retrieve the recipe name
+  var thisRecipeName = selectedRecipeCard.mName;
+    console.log('The selected mName = ', thisRecipeName);
+  var mainRecipeContainer = $('<div>').attr('class', 'sixteen wide column');
+  mainRecipeContainer.appendTo('#savedFoodList');
+  var currentRecipeTitle = $('<h2>').text(thisRecipeName);
+    currentRecipeTitle.appendTo(mainRecipeContainer);
+  //3b. Retrieve the recipe photo
+  var thisRecipePhoto = selectedRecipeCard.mPic;
+    console.log('The selected mPic = ', thisRecipePhoto);
+  var currentRecipeImage = $('<img>').attr({ src: thisRecipePhoto, class: 'ui rounded image' });
+  currentRecipeImage.appendTo(mainRecipeContainer);
+  //3c. Retrieve the recipe directions
+  var thisRecipeDirections = selectedRecipeCard.mInst;
+    console.log('The selected recipe directions are: ', thisRecipeDirections);
+  //3d. Part 1: Cycle through ingredients and create ingredient list
+  var thisIngredient = selectedRecipeCard.mIngreQty;
+    console.log('The selected recipe ingredient array = ', thisIngredient);
+  var thisIngredientList = $("<div>").text(thisIngredientContent).addClass("ui celled unordered list");
+  thisIngredientList.appendTo('#savedFoodList');
+  for (var i = 0; i < (thisIngredient.length - 1); i++) {
+    var thisIngredientContent = (thisIngredient[i].mIQty + ' ' + thisIngredient[i].mIngre);
+      console.log('The ingredient combination for ' + i + ' = ' + thisIngredientContent);
+    //3d. Part 2: For each looped ingredient, create and append an ingredient row.
+    var thisIngredientRow = $("<div>").text(thisIngredientContent).addClass("item");
+    thisIngredientRow.appendTo(thisIngredientList);
+    console.log('Ingredient ' + i + ' was added to the list.');
+  };
+  //3e. Append the directions container to the page
+  var thisDirectionsContainer = $('<p>').text(thisRecipeDirections);
+  thisDirectionsContainer.appendTo('#savedFoodList');
+}); //END FULL SAVED RECIPE DISPLAY FUNCTION
 
 function renderIng(mealObj, nPicCon) {
   var i = 0;
