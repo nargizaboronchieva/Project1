@@ -26,7 +26,7 @@ function showHome() {
   console.log("Enter showHome");
   document.getElementById("homePage").style.display = "block";
   document.getElementById("foodPage").style.display = "none";
-  document.getElementById("mealResult").style.display = "none";
+  //document.getElementById("mealResult").style.display = "none";
   document.getElementById("drinkPage").style.display = "none";
   document.getElementById("userPage").style.display = "none";
 }
@@ -46,6 +46,7 @@ $("#drink").on("click", showDrinkPage);
 function showDrinkPage() {
   document.getElementById("homePage").style.display = "none";
   document.getElementById("foodPage").style.display = "none";
+  document.getElementById("mealResult").style.display = "none";
   document.getElementById("drinkPage").style.display = "block";
   document.getElementById("userPage").style.display = "none";
 }
@@ -111,16 +112,29 @@ function displayDrinkList() {
 function displayDrink(drink) {
   //grab photo from data and attr on page
   // var drink = data.drinks[0];
+  $('#drinkList').empty();
+  //1. Retrieve data from API call
+  var drinkName = drink.strDrink;
   var drinkImage = drink.strDrinkThumb;
-  $("#drinkImage").attr("src", drinkImage);
+  //2. Create and append containers
+  var thisRecipeContainer = $('<div>').attr('class', 'seven wide column pusher');
+  thisRecipeContainer.appendTo('#drinkList');
+  var thisDrinkName = $('<h2>').text(drinkName);
+  thisDrinkName.appendTo(thisRecipeContainer);
+  var thisDrinkImage = $('<img>').attr("src", drinkImage);
+  thisDrinkImage.appendTo(thisRecipeContainer);
+  //$("#drinkImage").attr("src", drinkImage);
   // grab instruction from data and .text it to page
-  var drinkInstructions = drink.strInstructions;
-  $("#drinkInstructions").text(drinkInstructions);
 
-  // strIngredient1
+  // 3. strIngredient1 loop
+  // Create list container
+  var ingredientListContainer = $("<div>").attr('class', 'ui celled unordered list')
+  ingredientListContainer.appendTo(thisRecipeContainer);
   // loop through the drink ingredients
   for (var i = 1; i < 16; i++) {
     var ingredient = drink["strIngredient" + i];
+    var thisDrinkIngredient = $("<div>").attr('class', 'item').text(ingredient);
+    thisDrinkIngredient.appendTo(ingredientListContainer);
     // ingredient will be either a string or null
     console.log(ingredient);
     if (ingredient === null) {
@@ -128,8 +142,14 @@ function displayDrink(drink) {
     }
     // add to the drinkIngredients
     // pretend we have <ul id="drinkIngredients"><li></li></ul> in the html
-    $("#drinkIngredients").append("<li>" + ingredient + "</li>");
-  }
+    //$("#drinkIngredients").append("<li>" + ingredient + "</li>");
+    }
+
+    var drinkInstructions = drink.strInstructions;
+    var thisDrinkInstructions = $('<div>').text(drinkInstructions);
+    thisDrinkInstructions.appendTo(thisRecipeContainer);
+    //$("#drinkInstructions").text(drinkInstructions);
+  
 }
 
 //interact with api. get data from api. extract image directions and ingridents
