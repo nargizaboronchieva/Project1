@@ -1,322 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 1</title>
-    <!-- Semantic UI -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    />
-    <!-- CSS Stylesheet-->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
 
-  <body>
-    <!-- SIDE BAR NAVIGATION -->
-    <div class="ui left visible thin sidebar">
-      <a class="item navItem" id="home">
-        <img src="./assets/icons/home.png" alt="house icon" />
-      </a>
-      <a class="item navItem" id="food">
-        <img src="./assets/icons/food.png" alt="fork and spoon icon" />
-      </a>
-      <a class="item navItem" id="drink">
-        <img src="./assets/icons/drink.png" alt="martini glass icon" />
-      </a>
-      <a class="item navItem" id="user">
-        <img src="./assets/icons/user.png" alt=" stylized person icon" />
-      </a>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 1</title>
+  <!-- Semantic UI -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  <!-- CSS Stylesheet-->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
 
-    <!--WHOLE PAGE CONTAINER-->
-    <div class="pusher" id="pushContainer">
-      <!--HOME MAIN PAGE CONTAINER-->
-      <div class="ui stackable grid" id="homePage">
-        <!--CONTENT-->
-        <div class="three column row">
-          <!--MIDDLE CONTAINER-->
-          <div class="seven wide column pusher" id="headingStyle">
-            <div class="row">
-              <h1>Your next dinner party at the touch of a button.</h1>
-              <h3>
-                Find the perfect recipes for your favorite meals and cocktails.
-              </h3>
-            </div>
-            <div class="row">
-              <button class="ui button" id="buttonStyle">Food Recipes</button>
-            </div>
-            <div class="row">
-              <button class="ui button" id="buttonStyle">Drink Recipes</button>
-            </div>
+<body>
+  <!-- SIDE BAR NAVIGATION -->
+  <div class="ui left visible thin sidebar">
+    <a class="item navItem" id="home">
+      <img src="./assets/icons/home.png" alt="house icon" />
+    </a>
+    <a class="item navItem" id="food">
+      <img src="./assets/icons/food.png" alt="fork and spoon icon" />
+    </a>
+    <a class="item navItem" id="drink">
+      <img src="./assets/icons/drink.png" alt="martini glass icon" />
+    </a>
+    <a class="item navItem" id="user">
+      <img src="./assets/icons/user.png" alt=" stylized person icon" />
+    </a>
+  </div>
+
+  <!--WHOLE PAGE CONTAINER-->
+  <div class="pusher" id="pushContainer">
+    <!--HOME MAIN PAGE CONTAINER-->
+    <div class="ui stackable grid" id="homePage">
+      <!--CONTENT-->
+      <div class="three column row">
+        <!--MIDDLE CONTAINER-->
+        <div class="seven wide column pusher" id="headingStyle">
+          <div class="row">
+            <h1>Your next dinner party at the touch of a button.</h1>
+            <h3>
+              Find the perfect recipes for your favorite meals and cocktails.
+            </h3>
           </div>
+          <div class="row">
+            <button class="ui button" id="buttonStyle">Food Recipes</button>
+          </div>
+          <div class="row">
+            <button class="ui button" id="buttonStyle">Drink Recipes</button>
+          </div>
+        </div>
 
-          <!--RIGHT CONTAINER: SHOWN ON LOAD-->
-          <!-- </div> <div class="row" id="moodText">
+        <!--RIGHT CONTAINER: SHOWN ON LOAD-->
+        <!-- </div> <div class="row" id="moodText">
             <h2>What are you in the mood for?</h2>
             <h3>Pick your glass and we’ll do the rest!</h3>
           </div> -->
-          <div class="seven wide column row" id="randomGlass">
-            <div class="row">
-              <div class="glassContainer">
-                <input
-                  class="glassItem"
-                  id="collins"
-                  type="image"
-                  src="./assets/icons/collins.png"
-                />
-                <input
-                  class="glassItem"
-                  id="martini"
-                  type="image"
-                  src="./assets/icons/martini.png"
-                />
-                <input
-                  class="glassItem"
-                  id="Old-fashioned"
-                  type="image"
-                  src="./assets/icons/oldfashion.png"
-                />
-                <input
-                  class="glassItem"
-                  id="shot"
-                  type="image"
-                  src="./assets/icons/shots.png"
-                />
-                <input
-                  class="glassItem"
-                  id="Highball"
-                  type="image"
-                  src="./assets/icons/masonjar.png"
-                />
-                <input
-                  class="glassItem"
-                  id="margarita"
-                  type="image"
-                  src="./assets/icons/margarita.png"
-                />
-              </div>
-              <div id="randomDrinkResult"></div>
+        <div class="seven wide column row" id="randomGlass">
+          <div class="row">
+            <div class="glassContainer">
+              <input class="glassItem" id="collins" type="image" src="./assets/icons/collins.png" />
+              <input class="glassItem" id="martini" type="image" src="./assets/icons/martini.png" />
+              <input class="glassItem" id="Old-fashioned" type="image" src="./assets/icons/oldfashion.png" />
+              <input class="glassItem" id="shot" type="image" src="./assets/icons/shots.png" />
+              <input class="glassItem" id="Highball" type="image" src="./assets/icons/masonjar.png" />
+              <input class="glassItem" id="margarita" type="image" src="./assets/icons/margarita.png" />
             </div>
-          </div>
-
-          <!--CONTENT SHOWN AFTER EVENT: SET TO DISPLAY NONE IN CSS-->
-          <div class="ui card" id="randomDrink">
-            <div class="content">
-              <i class="right floated star icon"></i>
-              <div class="header">Example Recipe Card</div>
-              <div class="description">
-                <p>Directions will go here</p>
-              </div>
-            </div>
+            <div id="randomDrinkResult"></div>
           </div>
         </div>
-      </div>
-      <!--End Home Page-->
 
-      <!--FOOD MAIN PAGE CONTAINER-->
-      <div class="ui stackable grid" id="foodPage">
-        <!--CONTENT-->
-        <div class="one column row">
-          <!--MIDDLE CONTAINER-->
-          <div class="fourteen wide column pusher">
-            <div class="row">
-              <h1>Your dish is our command.</h1>
-            </div>
-            <div class="row">
-              <p>
-                Enter the name of your favorite meal below and we'll serve up
-                the recipe to satisfy your craving.
-              </p>
-            </div>
-            <div class="row">
-              <div class="ui fluid icon input">
-                <input
-                  type="text"
-                  id="mealInput"
-                  placeholder="Tell us your favorite meal"
-                />
-                <i class="search icon"></i>
-              </div>
-              <div class="ui submit button" id="searchMeal">Submit</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--MEAL RESULTS CONTAINER-->
-      <div class="ui stackable grid" id="mealResult">
-        <!--CONTENT-->
-        <div class="one column row">
-          <!--MIDDLE CONTAINER-->
-          <div id="foodList" class="ui fourteen column grid">
-            <!--Dynamically created food result cards go here-->
-            <!--Also use for individual recipe result when food card is clicked-->
-          </div>
-        </div>
-      </div>
-      <!--End Meal Result Page-->
-
-      <!--DRINK MAIN PAGE CONTAINER-->
-      <div class="ui stackable grid" id="drinkPage">
-        <!--CONTENT-->
-        <div class="one column row">
-          <!--MIDDLE CONTAINER-->
-          <div class="fourteen wide column pusher">
-            <div class="row">
-              <h1>No worries! The drink is on us.</h1>
-            </div>
-            <div class="row">
-              <p>
-                Enter the name of your favorite cocktail below and we'll mix up
-                the recipe to quench your thirst.
-              </p>
-            </div>
-            <img id="drinkImage" />
-            <div class="row">
-              <p id="drinkInstructions">Instructions</p>
-            </div>
-            <div class="row">
-              <div class="ui fluid icon input">
-                <input
-                  type="text"
-                  id="drinkInput"
-                  placeholder="Tell us your favorite drink"
-                />
-                <i class="search icon"></i>
-              </div>
-              <div class="ui submit button" id="searchDrink">Submit</div>
-              <div id="drinkList"></div>
-            </div>
-          </div>
-
-          <!--RIGHT CONTAINER-->
-          <div class="seven wide column row">
-            <div class="row">
-              <ul id="drinkIngredients"></ul>
-            </div>
-            <div class="row">
-              <h1>Name your ingredient and we'll shake up something good.</h1>
-            </div>
-            <div class="row">
-              <p>Select the star ingredient for your next toast.</p>
-            </div>
-            <div class="row">
-              <div class="ui fluid icon input">
-                <input type="text" placeholder="The secret ingredient is..." />
-                <i class="search icon"></i>
-              </div>
-              <div class="ui form">
-                <div class="field">
-                  <label>Number of cocktails to return</label>
-                  <div class="ui selection dropdown">
-                    <input type="hidden" name="drinkResultNumber" />
-                    <i class="dropdown icon"></i>
-                    <div class="default text" data-value="1">One</div>
-                    <div class="menu">
-                      <div class="item" id="dRecipeNumber" data-value="1">
-                        One
-                      </div>
-                      <div class="item" id="dRecipeNumber" data-value="2">
-                        Two
-                      </div>
-                      <div class="item" id="dRecipeNumber" data-value="3">
-                        Three
-                      </div>
-                      <div class="item" id="dRecipeNumber" data-value="4">
-                        Four
-                      </div>
-                      <div class="item" id="dRecipeNumber" data-value="5">
-                        Five
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="ui submit button" id="searchMeal">Submit</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--USER MAIN PAGE CONTAINER-->
-      <div class="ui stackable grid" id="userPage">
-        <!--CONTENT-->
-        <div class="one column row" id="fullRecipeDisplay">
-          <!--MIDDLE CONTAINER-->
-          <div class="seven wide column pusher">
-            <div class="row">
-              <h1>Your Fave Meals</h1>
-            </div>
-            <div class="ui two column stackable grid" id="savedFoodList">
-              <!-- SAVED FOOD ITEMS RENDER HERE-->
-            </div>
-          </div>
-
-          <!--RIGHT CONTAINER-->
-          <div class="seven wide column row">
-            <div class="row">
-              <h1>Your Fave Cocktails</h1>
-            </div>
-            <div class="ui two column stackable grid" id="savedDrinkList">
-              <!-- SAVED DRINK ITEMS RENDER HERE-->
+        <!--CONTENT SHOWN AFTER EVENT: SET TO DISPLAY NONE IN CSS-->
+        <div class="ui card" id="randomDrink">
+          <div class="content">
+            <i class="right floated star icon"></i>
+            <div class="header">Example Recipe Card</div>
+            <div class="description">
+              <p>Directions will go here</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!--END pusher-->
+    <!--End Home Page-->
+
+    <!--FOOD MAIN PAGE CONTAINER-->
+    <div class="ui stackable grid" id="foodPage">
+      <!--CONTENT-->
+      <div class="one column row">
+        <!--MIDDLE CONTAINER-->
+        <div class="fourteen wide column pusher">
+          <div class="row">
+            <h1>Your dish is our command.</h1>
+          </div>
+          <div class="row">
+            <p>
+              Enter the name of your favorite meal below and we'll serve up
+              the recipe to satisfy your craving.
+            </p>
+          </div>
+          <div class="row">
+            <div class="ui fluid icon input">
+              <input type="text" id="mealInput" placeholder="Tell us your favorite meal" />
+              <i class="search icon"></i>
+            </div>
+            <div class="ui submit button" id="searchMeal">Submit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--MEAL RESULTS CONTAINER-->
+    <div class="ui stackable grid" id="mealResult">
+      <!--CONTENT-->
+      <div class="one column row">
+        <!--MIDDLE CONTAINER-->
+        <div id="foodList" class="ui fourteen column pusher">
+          <!--Dynamically created food result cards go here-->
+          <!--Also use for individual recipe result when food card is clicked-->
+        </div>
+      </div>
+    </div>
+    <!--End Meal Result Page-->
+
+    <!--Drinks Results Container-->
+    <div class="ui stackable grid" id="drinkPage">
+      <!--CONTENT-->
+      <div class="one column row">
+        <!--MIDDLE CONTAINER-->
+        <div class="ui fourteen column pusher">
+          <div class="row">
+            <h1>No worries! The drink is on us.</h1>
+          </div>
+          <div class="row">
+            <p>
+              Enter the name of your favorite cocktail below and we'll mix up
+              the recipe to quench your thirst.
+            </p>
+          </div>
+          <div class="row">
+            <div class="ui fluid icon input">
+              <input type="text" id="drinkInput" placeholder="Tell us your favorite drink" />
+              <i class="search icon"></i>
+            </div>
+            <div class="ui submit button" id="searchDrink">Submit</div>
+            <div id="drinkList" class="ui fourteen column grid">
+              <!--DRINK ITEMS GO HERE-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--USER MAIN PAGE CONTAINER-->
+    <div class="ui stackable grid" id="userPage">
+      <!--CONTENT-->
+      <div class="one column row" id="fullRecipeDisplay">
+        <!--MIDDLE CONTAINER-->
+        <div class="seven wide column pusher">
+          <div class="row">
+            <h1>Your Fave Meals</h1>
+          </div>
+          <div class="ui two column stackable grid" id="savedFoodList">
+            <!-- SAVED FOOD ITEMS RENDER HERE-->
+          </div>
+        </div>
+
+        <!--RIGHT CONTAINER-->
+        <div class="seven wide column row">
+          <div class="row">
+            <h1>Your Fave Cocktails</h1>
+          </div>
+          <div class="ui two column stackable grid" id="savedDrinkList">
+            <!-- SAVED DRINK ITEMS RENDER HERE-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--END pusher-->
 
     <!-- JavaScript File -->
 
     <!-- Semantic UI -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src="./assets/scripts/foodscript.js"></script>
     <script src="./assets/scripts/script.js"></script>
     <script src="./assets/scripts/randomdrink.js"></script>
-  </body>
+</body>
+
 </html>
-
-<!-- CARDS FOR RESULT DISPLAYS -->
-
-<!-- <div class="ui three column grid" id="randomDrink">
-    <div class="column">
-    <div class="ui fluid card">
-        <div class="image">
-        <img src="/images/avatar/large/daniel.jpg">
-        </div>
-        <div class="content">
-        <a class="header">Daniel Louise</a>
-        </div>
-    </div>
-    </div>
-    <div class="column">
-    <div class="ui fluid card">
-        <div class="image">
-        <img src="/images/avatar/large/helen.jpg">
-        </div>
-        <div class="content">
-        <a class="header">Helen Troy</a>
-        </div>
-    </div>
-    </div>
-    <div class="column">
-    <div class="ui fluid card">
-        <div class="image">
-        <img src="/images/avatar/large/elliot.jpg">
-        </div>
-        <div class="content">
-        <a class="header">Elliot Fu</a>
-        </div>
-    </div>
-    </div>
-</div> -->
