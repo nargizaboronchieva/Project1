@@ -5,6 +5,29 @@ document.getElementById("foodPage").style.display = "none";
 document.getElementById("drinkPage").style.display = "none";
 document.getElementById("userPage").style.display = "none";
 
+// RESPONSIVE MOBILE MENU
+// $(window).resize(function() {
+//   // Detect if the resized screen is mobile or desktop width
+//       if($(window).width() > 617) {
+//           console.log('desktop'); 
+//           $('#mobileMenu').sidebar('hide');
+//       }
+//       else {
+//          console.log('mobile');
+//       }
+//   });
+
+// BUTTON DIRECTS TO FOOD AND DRINK PAGES
+function goToFood() {
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("foodPage").style.display = "block";
+}
+
+function goToDrink() {
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("drinkPage").style.display = "block";
+}
+
 // SHOW HOME PAGE
 // Data structure of each single meal
 // var mealObj = {

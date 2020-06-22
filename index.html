@@ -14,7 +14,7 @@
 
 <body>
   <!-- SIDE BAR NAVIGATION -->
-  <div class="ui left visible thin sidebar">
+  <div class="ui left visible thin sidebar" id="menu">
     <a class="item navItem" id="home">
       <img src="./assets/icons/home.png" alt="house icon" />
     </a>
@@ -28,6 +28,25 @@
       <img src="./assets/icons/user.png" alt=" stylized person icon" />
     </a>
   </div>
+
+  <!--MOBILE NAV-->
+  <!-- <nav class="ui inverted sidebar menu vertical slide out" id="mobileMenu">
+    <a class="item mobileItem" id="home">
+      <img src="./assets/icons/home.png" alt="house icon" />
+    </a>
+    <a class="item mobileItem" id="food">
+      <img src="./assets/icons/food.png" alt="fork and spoon icon" />
+    </a>
+    <a class="item mobileItem" id="drink">
+      <img src="./assets/icons/drink.png" alt="martini glass icon" />
+    </a>
+    <a class="item mobileItem" id="user">
+      <img src="./assets/icons/user.png" alt=" stylized person icon" />
+    </a>
+    </nav>
+  <div class="ui labeled icon button black" id="menuBtn">
+    <i class="icon list layout"></i> Menu
+  </div> -->
 
   <!--WHOLE PAGE CONTAINER-->
   <div class="pusher" id="pushContainer">
@@ -44,18 +63,14 @@
             </h3>
           </div>
           <div class="row">
-            <button class="ui button" id="buttonStyle">Food Recipes</button>
+            <button class="ui button" id="buttonStyle" onclick="goToFood()">Food Recipes<i class="search icon searchIconStyle"></i></button>
           </div>
           <div class="row">
-            <button class="ui button" id="buttonStyle">Drink Recipes</button>
+            <button class="ui button" id="buttonStyle" onclick="goToDrink()">Drink Recipes<i class="search icon searchIconStyle"></i></button>
           </div>
         </div>
 
         <!--RIGHT CONTAINER: SHOWN ON LOAD-->
-        <!-- </div> <div class="row" id="moodText">
-            <h2>What are you in the mood for?</h2>
-            <h3>Pick your glass and we’ll do the rest!</h3>
-          </div> -->
         <div class="seven wide column row" id="randomGlass">
           <div class="row">
             <div class="glassContainer">
@@ -65,6 +80,10 @@
               <input class="glassItem" id="shot" type="image" src="./assets/icons/shots.png" />
               <input class="glassItem" id="Highball" type="image" src="./assets/icons/masonjar.png" />
               <input class="glassItem" id="margarita" type="image" src="./assets/icons/margarita.png" />
+            </div>
+            <div class="row" id="moodText">
+              <h2>What are you in the mood for?</h2>
+              <h3>Pick your glass and we’ll do the rest!</h3>
             </div>
             <div id="randomDrinkResult"></div>
           </div>
