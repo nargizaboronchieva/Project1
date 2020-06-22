@@ -28,7 +28,8 @@ h3 {
 #buttonStyle {
   color: #232240;
   background-color: #f2d5c4;
-  margin: 12%;
+  margin: 10%;
+  padding: 4%;
 }
 
 /* NAVIGATION */
@@ -45,6 +46,39 @@ h3 {
   margin-left: 10%;
 }
 
+/* MOBILE */
+/* @media all and (max-width:630px) { */
+
+  /* First, hide the main menu */
+      /* #menu {
+        display:none;
+      } */
+  /* then display the mobile menu */
+      /* #mobileMenu {
+          display:block;
+      } */
+  /* lastly, show your mobile menu button */
+      /* #menuBtn{
+          display:inline-block;
+      }
+  } */
+
+/* DESKTOP */
+/* @media all and (min-width:631px) { */
+  /* Hide the mobile menu */
+      /* #mobileMenu {
+          display:none;
+      } */
+  /* Unhide the regular menu */
+      /* #menu{
+        display:block;
+      } */
+  /* Lastly, hide the mobile menu button */
+      /* #menuBtn{
+         display:none;
+     }    
+  } */
+
 /* Pusher Styleing */
 #pushContainer {
   margin: 5%;
@@ -58,6 +92,11 @@ h3 {
 #moodText {
   margin-top: 7%;
   margin-left: 5%;
+}
+
+.searchIconStyle {
+  padding-left: 20px;
+  padding-right: 10px;
 }
 
 /* This moves to line with glasses */
