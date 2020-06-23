@@ -26,7 +26,7 @@ h3 {
 }
 
 #buttonStyle {
-  color: #232240;
+  background-color: #232240;
   background-color: #f2d5c4;
   margin: 10%;
   padding: 4%;
@@ -44,7 +44,10 @@ h3 {
   margin-top: 15%;
   margin-bottom: 15%;
   margin-left: 10%;
+  border-image: 25 25 round;
+  
 }
+
 
 /* MOBILE */
 /* @media all and (max-width:630px) { */
@@ -146,3 +149,43 @@ h3 {
 /* DRINK PAGE */
 
 /* USER PAGE */
+
+.img-menu {
+  opacity: 1;
+  display: block;
+  width: 300%;
+  height: auto;
+  transition: 0.5s ease;
+  cursor: pointer ;
+}
+
+
+.navItem:hover .img-menu {
+  opacity: 0.3;
+  transform: scale(1.5);/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+}
+
+.navItem:active .img-menu {
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+#menu {
+  background-color: none;
+  
+}
+
+.navItem:focus .img-menu {
+  background-color:red;
+  transform: scale(1.5);/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+}
+
+.navItem .img-menu {
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
