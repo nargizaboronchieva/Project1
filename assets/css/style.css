@@ -129,6 +129,15 @@ h3 {
   display: none;
 }
 
+#moodText {
+  padding: 2px;
+  margin: 2px 2px 2px 2px;
+}
+#randomDrinkResult {
+  margin-top:5px; 
+  margin-bottom:5px;
+}
+
 /* FOOD PAGE */
 /* #mealResult {
     display:none;

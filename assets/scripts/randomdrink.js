@@ -64,17 +64,38 @@ var createRandomDrink = (drinks) => {
 		<div class="row">
 			<div>
 				<img src="${drinks.strDrinkThumb}" alt="drinks Image">
-                <h1>${drinks.strDrink}</h1>
-                ${drinks.strCategory ? `<p><strong>Category:</strong> ${drinks.strCategory}</p>` : ''}
-                ${drinks.strGlass ? `<p><strong>Glass Type:</strong> ${drinks.strGlass}</p>` : ''}
-				<h5>Ingredients:</h5>
-				<ul>
-					${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                <h1 style="font-size:45px">
+                     ${drinks.strDrink}
+                </h1>
+                ${drinks.strCategory ? `
+                <p style="font-size:20px">
+                    <strong>
+                         Category:
+                    </strong>
+                 ${drinks.strCategory}
+                 </p>` : ''}
+                ${drinks.strGlass ? `
+                <p style="font-size:20px">
+                    <strong>
+                         Glass Type:
+                    </strong>
+                 ${drinks.strGlass}
+                 </p>` : ''}
+                <h5 style="font-size:20px">
+                     <strong>
+                        Ingredients:
+                    </strong>
+                </h5>
+                <ul 
+                    style="line-height: 3em">
+                    ${ingredients.map(ingredient =>
+                         `<li>
+                             ${ingredient}
+                         </li>`).join('')}
 				</ul>
 			</div>
 			<div>
-				
-				<p>${drinks.strInstructions}</p>
+				<p style="font-size:25px">${drinks.strInstructions}</p>
 			</div>
 		</div>
 	`;
