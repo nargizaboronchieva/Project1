@@ -144,6 +144,8 @@ function displayDrink(drink) {
   thisRecipeContainer.appendTo('#drinkList');
   var thisDrinkName = $('<h2>').text(drinkName);
   thisDrinkName.appendTo(thisRecipeContainer);
+  var drinkStarIcon = $("<i>").attr({class: "right floated star icon", id: event.target.id});
+  drinkStarIcon.appendTo(thisDrinkName);
   var thisDrinkImage = $('<img>').attr("src", drinkImage);
   thisDrinkImage.appendTo(thisRecipeContainer);
   //$("#drinkImage").attr("src", drinkImage);
@@ -155,9 +157,18 @@ function displayDrink(drink) {
   ingredientListContainer.appendTo(thisRecipeContainer);
   // loop through the drink ingredients
   for (var i = 1; i < 16; i++) {
+    var measure = drink["strMeasure" + i];
     var ingredient = drink["strIngredient" + i];
-    var thisDrinkIngredient = $("<div>").attr('class', 'item').text(ingredient);
-    thisDrinkIngredient.appendTo(ingredientListContainer);
+    if (ingredient === null) {
+        break;
+    } else if (measure === null){
+        var thisDrinkIngredient = $("<div>").attr('class', 'item').text(ingredient);
+        thisDrinkIngredient.appendTo(ingredientListContainer);
+    } else {
+        var thisDrinkIngredient = $("<div>").attr('class', 'item').text(measure + ' ' + ingredient);
+        thisDrinkIngredient.appendTo(ingredientListContainer);
+    }
+    
     // ingredient will be either a string or null
     console.log(ingredient);
     if (ingredient === null) {
