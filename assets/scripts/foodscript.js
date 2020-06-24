@@ -12,7 +12,7 @@
 // // Array List of favorite Recipes
 // var arrayR = [];
 var fChoice = []; // choice to be selected
-var mealHistory = []; //array of saved meal objects....
+var mealHistory = JSON.parse(localStorage.getItem('userRecipes')) || []; //array of saved meal objects....
 var mealDetail;
 
 $("#home").on("click", showHome);
@@ -59,6 +59,7 @@ function mealList(event) {
     method: "GET",
   }).then(processData);
 } // end mealList
+
 
 
 // Construct a food object that has all attributes.
@@ -130,6 +131,8 @@ function pIngredient(fObject, mealObj, mealCnt, index) {
 
 // Display Food on Food container "foodList".
 function renderNamePic(mealObj) {
+  console.log('The renderNamePic function is being entered.');
+
   console.log('The renderNamePic function mealObj is: ', mealObj);
   var fName = $("<h2>").text(mealObj.mName).addClass("star outline icon");
 
@@ -167,6 +170,7 @@ function renderNamePic(mealObj) {
   // 2. mealObj associated with clicked item is pushed to local storage object array
   starIcon.on('click', function () {
     //Local Storage Array to hold all saved meals
+
     if (mealHistory.indexOf(mealObj) === -1) {
       mealHistory.push(mealObj);
     }
@@ -180,7 +184,7 @@ function renderNamePic(mealObj) {
 
 //User menu button click starts renderMealHistory function
 $('#user').click(function () {
-  $('#mealResult').empty();
+  //$('#mealResult').empty();
   $('#foodList').empty();
   $('#savedFoodList').empty();
 
