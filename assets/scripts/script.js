@@ -107,6 +107,8 @@ function drinkList(event) {
     displayDrinkList();
   });
 }
+var myStoredDrinks = [];
+
 function displayDrinkList() {
   //loop through all drinks
   drinks.forEach((drink, i) => {
@@ -115,7 +117,17 @@ function displayDrinkList() {
     var drinkTitle = drink.strDrink;
     //append to the page
      var drinkName = $("<h2>").text(drinkTitle);
-     var drinkStarIcon = $("<i>").attr("class", "right floated star icon");
+     var drinkStarIcon = $("<i>").attr({class: "right floated star icon", id: drink.strDrink});
+     drinkStarIcon.click(function(event){
+        event.stopPropagation();
+        var idToStore = $(this).prop('id');
+        console.log('The star has been clicked');
+        console.log('Id to store = ', idToStore);
+        myStoredDrinks.push(idToStore);
+        console.log('myStoredDrinks = ', myStoredDrinks);
+        localStorage.setItem('savedDrinks', JSON.stringify(myStoredDrinks));
+     })
+
      drinkName.append(drinkStarIcon);
   
      var drinkPic = $("<img>")
@@ -187,6 +199,13 @@ function displayDrink(drink) {
 }
 
 //Local Storage using star icon
+$('i.right.floated.star.icon::before').click(function(event){
+  event.stopPropagation();
+  console.log('This event target = ', event.target.class);
+  console.log('The star has been clicked');
+  // var storeThisID = $(this).attr('id');
+  // console.log('The star ID = ', storeThisID);
+});
 
 
 //interact with api. get data from api. extract image directions and ingridents
