@@ -186,6 +186,9 @@ function displayDrink(drink) {
   
 }
 
+//Local Storage using star icon
+
+
 //interact with api. get data from api. extract image directions and ingridents
 //display drink info
 
