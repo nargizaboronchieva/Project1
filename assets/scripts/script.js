@@ -107,7 +107,9 @@ function drinkList(event) {
     displayDrinkList();
   });
 }
-var myStoredDrinks = [];
+
+//Set variable for local storage array
+var myStoredDrinks = JSON.parse(localStorage.getItem('savedDrinks')) || [];
 
 function displayDrinkList() {
   //loop through all drinks
@@ -118,14 +120,18 @@ function displayDrinkList() {
     //append to the page
      var drinkName = $("<h2>").text(drinkTitle);
      var drinkStarIcon = $("<i>").attr({class: "right floated star icon", id: drink.strDrink});
+     drinkStarIcon.attr('data-index', i);
      drinkStarIcon.click(function(event){
         event.stopPropagation();
+        drinkStarIcon.css('color', 'orange');
         var idToStore = $(this).prop('id');
-        console.log('The star has been clicked');
         console.log('Id to store = ', idToStore);
-        myStoredDrinks.push(idToStore);
+          if (myStoredDrinks.indexOf(idToStore) == -1){
+          myStoredDrinks.push(idToStore);
+          }
         console.log('myStoredDrinks = ', myStoredDrinks);
         localStorage.setItem('savedDrinks', JSON.stringify(myStoredDrinks));
+        
      })
 
      drinkName.append(drinkStarIcon);
@@ -198,27 +204,42 @@ function displayDrink(drink) {
   
 }
 
-//Local Storage using star icon
-$('i.right.floated.star.icon::before').click(function(event){
-  event.stopPropagation();
-  console.log('This event target = ', event.target.class);
-  console.log('The star has been clicked');
-  // var storeThisID = $(this).attr('id');
-  // console.log('The star ID = ', storeThisID);
-});
+//LOCAL STORAGE:
+//Create object to store retrieved information for saved drinks (for next phase)
+var storedDrinksObject = [];
 
-
-//interact with api. get data from api. extract image directions and ingridents
-//display drink info
-
-// SHOW USER PROFILE
-// id="user" button
-// id="userPage" section
+//1. User clicks the User Icon
 $("#user").on("click", showUserProfile);
 function showUserProfile() {
-  console.log("Enter showUserProfile");
+  //2.Empty saved drinks list
+  $('#savedDrinkList').empty();
   document.getElementById("homePage").style.display = "none";
   document.getElementById("foodPage").style.display = "none";
   document.getElementById("drinkPage").style.display = "none";
   document.getElementById("userPage").style.display = "block";
-}
+  
+  //3. Retrieve information from local storage
+  var userDrinks = JSON.parse(localStorage.getItem('savedDrinks'));
+  //4. Cycle through the name drink array to retrieve drink information and post drinks to the page.
+  for (var i = 0; i < userDrinks.length; i++){
+    var thisDrink = userDrinks[i];
+    var savedDrinkURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + thisDrink;
+    $.ajax({
+      url: savedDrinkURL,
+      method: 'GET',
+      success: function(result){
+          console.log('The result is: ', result);
+        var savedDrinkName = result.drinks[0].strDrink;
+        var savedDrinkImage = result.drinks[0].strDrinkThumb;
+
+        //Build recipe card
+        var mainCardContainer = $('<div>').attr('class', 'column').appendTo('#savedDrinkList');
+        var column = $('<div>').attr('class', 'ui fluid card').appendTo(mainCardContainer);
+        var cardImageDiv = $('<div>').attr('class', 'image').appendTo(column);
+        var cardImage = $('<img>').attr('src',savedDrinkImage).appendTo(cardImageDiv);
+        var drinkTitleDiv = $('<div>').attr('class', 'content').appendTo(column);
+        $('<p>').attr('class', 'header').text(savedDrinkName).appendTo(drinkTitleDiv);
+      }
+    })
+  }
+};
