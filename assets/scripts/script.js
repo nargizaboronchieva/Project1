@@ -176,11 +176,21 @@ function displayDrinkList() {
       drinkStarIcon.css('color', 'orange');
       var idToStore = $(this).attr('data-index');
       console.log('Id to store = ', idToStore);
-      if (myStoredDrinks.indexOf(drinksObjectArray[idToStore]) == -1) {
-        myStoredDrinks.push(drinksObjectArray[idToStore]);
-      }
-      console.log('myStoredDrinks so far = ', myStoredDrinks);
-      localStorage.setItem('savedDrinks', JSON.stringify(myStoredDrinks));
+
+      for (var i = 0; i < myStoredDrinks.length; i++) {
+        console.log(drinksObjectArray[idToStore].name);
+        if (myStoredDrinks[i].name == drinksObjectArray[idToStore].name) {
+          console.log("This drink is already in myStoredDrinks, do not add", drinksObjectArray[idToStore]);
+          var addDrink = false;
+        }
+      }// end For Loop
+      if (addDrink == true) {
+        myStoredDrinks.push(myStoredDrinks[idToStore]);
+          console.log('Add this drink to drink history and local storage ', myStoredDrinks[idToStore]);
+          starIcon.css('color', 'orange');
+          localStorage.setItem('savedDrinks', JSON.stringify(myStoredDrinks));
+          console.log("Meal History so far: ", myStoredDrinks);
+      } //end If Condition
     })
 
     drinkName.append(drinkStarIcon);

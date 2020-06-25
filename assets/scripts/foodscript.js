@@ -168,17 +168,29 @@ function renderNamePic(mealObj) {
   // Local Storage.
   // 1. User clicks star
   // 2. mealObj associated with clicked item is pushed to local storage object array
-  starIcon.on('click', function () {
     //Local Storage Array to hold all saved meals
+    starIcon.on('click', function () {
+      console.log('This is the selected mealObj position ', mealObj.mID);
+      starIcon.css('color', 'orange');
+      //Local Storage Array to hold all saved meals
+      addMeal = true;
+      for (var i = 0; i < mealHistory.length; i++) {
+        console.log(mealHistory[i].mName);
+        if (mealHistory[i].mName == mealObj.mName) {
+          console.log("This meal obj is already in mealhistory, do not add", mealObj);
+          var addMeal = false;
+        }
+      }// end For Loop
+      if (addMeal == true) {
+          mealHistory.push(mealObj);
+          console.log('Add this meal obj to meal history and local storage ', mealObj);
+          starIcon.css('color', 'orange');
+          localStorage.setItem('userRecipes', JSON.stringify(mealHistory));
+          console.log("Meal History so far: ", mealHistory);
+      } //end If Condition
+    }); //END SET LOCAL STORAGE FOR STARRED MEALS FUNCTION
 
-    if (mealHistory.indexOf(mealObj) === -1) {
-      mealHistory.push(mealObj);
-    }
-    console.log('This is the selected mealObj position ', mealObj.mID);
-    starIcon.css('color', 'orange');
-    localStorage.setItem('userRecipes', JSON.stringify(mealHistory));
-    console.log("Meal History so far: ", mealHistory);
-  }); //END SET LOCAL STORAGE FOR STARRED MEALS FUNCTION
+
 
 } // end renderNamePic
 
