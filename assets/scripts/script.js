@@ -216,7 +216,7 @@ function displayDrinkList() {
 
 function displayDrink(drinkIndex) {
 //1. Empty the container
-    $('#drinkList').empty();
+  $('#drinkList').empty();
     
 //2. Grab id from image on page
     var userSelectedDrinkID = drinkIndex;
@@ -300,6 +300,8 @@ function showUserProfile() {
   document.getElementById("foodPage").style.display = "none";
   document.getElementById("drinkPage").style.display = "none";
   document.getElementById("userPage").style.display = "block";
+  drinksObjectArray = [];
+
 
   //3. Retrieve information from local storage
   console.log('myStoredDrinks.length before user click if statement');
@@ -328,6 +330,7 @@ function showUserProfile() {
 //1. On click event
 $('#savedDrinkList').click(function (event) {
   event.stopPropagation();
+  drinksObjectArray = [];
 
   //2. Empty container
   $('#savedDrinkList').empty();

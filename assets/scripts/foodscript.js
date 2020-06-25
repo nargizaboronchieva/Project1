@@ -12,10 +12,6 @@ function showHome() {
   document.getElementById("userPage").style.display = "none";
 }
 
-//DROPDOWNS Functionality: Food and Drink page
-$(".ui.dropdown").dropdown();
-
-
 $("#food").on("click", showFoodPage);
 function showFoodPage() {
   document.getElementById("homePage").style.display = "none";
@@ -23,8 +19,6 @@ function showFoodPage() {
   document.getElementById("drinkPage").style.display = "none";
   document.getElementById("userPage").style.display = "none";
 }
-
-
 
 // Listener for Meal Search
 $("#searchMeal").on("click", mealList);
@@ -183,7 +177,7 @@ function renderNamePic(mealObj) {
 
 //User menu button click starts renderMealHistory function
 $('#user').click(function () {
-  //$('#mealResult').empty();
+  drinksObjectArray = [];
   $('#foodList').empty();
   $('#savedFoodList').empty();
 
@@ -215,6 +209,7 @@ $('#user').click(function () {
 //Display Recipe when user clicks image from User Page - MODAL
 $('#savedFoodList').click(function () {
   //Clear the container
+  drinksObjectArray = [];
   $('#savedFoodList').empty();
   //1. Capture id (recipe index in saved recipe array) from clicked recipe card
   selectedFoodItem = event.target.id;
