@@ -173,24 +173,26 @@ function displayDrinkList() {
     //SET LOCAL STORAGE BASED ON USER SELECTION
     drinkStarIcon.click(function (event) {
       event.stopPropagation();
-      drinkStarIcon.css('color', 'orange');
+      myStoredDrinks = JSON.parse(localStorage.getItem('savedDrinks')) || [];
+        console.log('These are my stored drinks so far at the start of star click: ', myStoredDrinks);
       var idToStore = $(this).attr('data-index');
       console.log('Id to store = ', idToStore);
-
+      $(this).attr('class', 'right floated orange star icon');
+      var addDrink = true;
       for (var i = 0; i < myStoredDrinks.length; i++) {
         console.log(drinksObjectArray[idToStore].name);
         if (myStoredDrinks[i].name == drinksObjectArray[idToStore].name) {
           console.log("This drink is already in myStoredDrinks, do not add", drinksObjectArray[idToStore]);
-          var addDrink = false;
+          addDrink = false;
         }
       }// end For Loop
       if (addDrink == true) {
-        myStoredDrinks.push(myStoredDrinks[idToStore]);
-          console.log('Add this drink to drink history and local storage ', myStoredDrinks[idToStore]);
-          starIcon.css('color', 'orange');
+        myStoredDrinks.push(drinksObjectArray[idToStore]);
+          console.log('Add this drink to drink history and local storage ', drinksObjectArray[idToStore]);
           localStorage.setItem('savedDrinks', JSON.stringify(myStoredDrinks));
-          console.log("Meal History so far: ", myStoredDrinks);
+          console.log("Drink History so far: ", myStoredDrinks);
       } //end If Condition
+      
     })
 
     drinkName.append(drinkStarIcon);
