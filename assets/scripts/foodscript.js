@@ -1,16 +1,3 @@
-// SHOW HOME PAGE
-// Data structure of each single meal
-// var mealObj = {
-//     mName:"Fried Chicken",
-//     mRecipe:"",
-//     mIngreQty:[{mIngre:"lemon", mInQty:"4 teaspoon"}],  <- ingredientName, Quantity
-//     mPic:"",     < Meal Pic
-//     mIngLen,     <- Number of Ingredent used in FOR loop
-//     mID          <- Index the meal to retreive in array
-// }
-
-// // Array List of favorite Recipes
-// var arrayR = [];
 var fChoice = []; // choice to be selected
 var mealHistory = JSON.parse(localStorage.getItem('userRecipes')) || []; //array of saved meal objects....
 var mealDetail;
@@ -289,16 +276,16 @@ function renderIng(mealObj, nPicCon) {
 
 function renderInst(mealObj, iuiList, nPicCon) {
   // Display Instruction on the right
-
+  var instructionsWrapper = $('<div>').attr('class', 'seven wide column pusher');
   var fInst = $("<p>").text(mealObj.mInst);
 
   //var ingInstCon = $("<div>").append(iuiList,instC).addClass("seven wide column row");
   //var mContainer = $("<div>").append(nPicCon, ingInstCon).addClass("three column row");
   //var mContainer = $("<div>").append(nPicCon, iuiList,instC).addClass("three column row");
 
-  nPicCon.append(fInst);
+  instructionsWrapper.append(iuiList, fInst);
   var mContainer = $("<div>")
-    .append(nPicCon, iuiList)
+    .append(nPicCon, instructionsWrapper)
     .addClass("three column row")
     .attr("id", "detailCon");
   console.log("Before the whole mContainer", mContainer);
