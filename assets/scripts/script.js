@@ -204,7 +204,8 @@ function displayDrinkList() {
     var drinkPicCon = $("<div>")
       .append(drinkName, drinkPic)
       .addClass("seven wide column pusher");
-
+    
+    $("#drinkResult").css("display", "block");
     $("#drinkList").append(drinkPicCon).css("display", "block");
 
     console.log('Complete iteration ' + i);
@@ -215,7 +216,7 @@ function displayDrinkList() {
 
 function displayDrink(drinkIndex) {
 //1. Empty the container
-    $('#drinkList').empty();
+  $('#drinkList').empty();
     
 //2. Grab id from image on page
     var userSelectedDrinkID = drinkIndex;
@@ -227,20 +228,48 @@ function displayDrink(drinkIndex) {
     var drinkImage = selectedDrink.pic;
 
 //4. Create and append containers
+    var outerRecipeWrapper = $('<div>').attr('class', 'three column row');
+    $('#drinkList').append(outerRecipeWrapper);
     var thisRecipeContainer = $('<div>').attr('class', 'seven wide column pusher');
-    thisRecipeContainer.appendTo('#drinkList');
+    thisRecipeContainer.appendTo(outerRecipeWrapper);
     var thisDrinkName = $('<h2>').text(drinkName);
     thisDrinkName.appendTo(thisRecipeContainer);
     var drinkStarIcon = $("<i>").attr({ class: "right floated star icon", id: event.target.id });
     drinkStarIcon.appendTo(thisDrinkName);
-    var thisDrinkImage = $('<img>').attr("src", drinkImage);
-    thisDrinkImage.appendTo(thisRecipeContainer);
-    $("#drinkImage").attr("src", drinkImage);
+    //SET LOCAL STORAGE BASED ON USER SELECTION
+    drinkStarIcon.click(function (event) {
+      event.stopPropagation();
+      myStoredDrinks = JSON.parse(localStorage.getItem('savedDrinks')) || [];
+        console.log('These are my stored drinks so far at the start of star click: ', myStoredDrinks);
+      var idToStore = $(this).attr('id');
+      console.log('Id to store = ', idToStore);
+      $(this).attr('class', 'right floated orange star icon');
+      var addDrink = true;
+      for (var i = 0; i < myStoredDrinks.length; i++) {
+        console.log(drinksObjectArray[idToStore].name);
+        if (myStoredDrinks[i].name == drinksObjectArray[idToStore].name) {
+          console.log("This drink is already in myStoredDrinks, do not add", drinksObjectArray[idToStore]);
+          addDrink = false;
+        }
+      }// end For Loop
+      if (addDrink == true) {
+        myStoredDrinks.push(drinksObjectArray[idToStore]);
+          console.log('Add this drink to drink history and local storage ', drinksObjectArray[idToStore]);
+          localStorage.setItem('savedDrinks', JSON.stringify(myStoredDrinks));
+          console.log("Drink History so far: ", myStoredDrinks);
+      } //end If Condition
+      
+    })
 
+
+    var thisDrinkImage = $('<img>').attr({src: drinkImage, class: 'ui fluid image rounded'}).css('float', 'left');
+    thisDrinkImage.appendTo(thisRecipeContainer);
 //5. Ingredient loop
     //A. Create list container
+    var outerInstructionsContainer = $('<div>').attr('class', 'seven wide column pusher');
+    outerInstructionsContainer.appendTo(outerRecipeWrapper);
     var ingredientListContainer = $("<div>").attr('class', 'ui celled unordered list')
-    ingredientListContainer.appendTo(thisRecipeContainer);
+    ingredientListContainer.appendTo(outerInstructionsContainer);
     //B. Loop through the drink ingredients & append to list container after each round
       for (var i = 0; i < (selectedDrink.ingredients).length; i++) {
         var ingredient = selectedDrink.ingredients[i];
@@ -254,9 +283,8 @@ function displayDrink(drinkIndex) {
 
 //6. Add directions below ingredients list
     var drinkInstructions = selectedDrink.directions;
-    var thisDrinkInstructions = $('<div>').text(drinkInstructions);
-    thisDrinkInstructions.appendTo(thisRecipeContainer);
-    $("#drinkInstructions").text(drinkInstructions);
+    var thisDrinkInstructions = $('<p>').text(drinkInstructions);
+    thisDrinkInstructions.appendTo(outerInstructionsContainer);
    }
 
 //LOCAL STORAGE DISPLAY:
@@ -272,8 +300,11 @@ function showUserProfile() {
   document.getElementById("foodPage").style.display = "none";
   document.getElementById("drinkPage").style.display = "none";
   document.getElementById("userPage").style.display = "block";
+  drinksObjectArray = [];
+
 
   //3. Retrieve information from local storage
+  console.log('myStoredDrinks.length before user click if statement');
   if (myStoredDrinks.length > 0) {
     console.log('These are my saved drinks: ', myStoredDrinks);
     var userDrinks = JSON.parse(localStorage.getItem('savedDrinks'));
@@ -299,6 +330,7 @@ function showUserProfile() {
 //1. On click event
 $('#savedDrinkList').click(function (event) {
   event.stopPropagation();
+  drinksObjectArray = [];
 
   //2. Empty container
   $('#savedDrinkList').empty();
