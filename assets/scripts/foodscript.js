@@ -60,9 +60,10 @@ function processData(fObject) {
     //Create new mealObj
     var mealObj = {};
     mealObj["mName"] = fObject.meals[mealCnt].strMeal;
-    mealObj["mInst"] = fObject.meals[mealCnt].strInstructions;
+    mealObj["mInst"] = (fObject.meals[mealCnt].strInstructions).split('\r\n');
     mealObj["mPic"] = fObject.meals[mealCnt].strMealThumb;
     mealObj["mIngreQty"] = []; // Array to store multiple Ingredients for that same meal
+    mealObj["mYouTube"] = fObject.meals[mealCnt].strYoutube;
     mealObj["mID"] = mealCnt;
 
 
@@ -248,9 +249,15 @@ $('#savedFoodList').click(function () {
     thisIngredientRow.appendTo(thisIngredientList);
     console.log('Ingredient ' + i + ' was added to the list.');
   };
-  //3e. Append the directions container to the page
-  var thisDirectionsContainer = $('<p>').text(thisRecipeDirections);
-  thisDirectionsContainer.appendTo('#savedFoodList');
+  //3e. Cycle through the directions and append to the page
+  for (var i = 0; i < thisRecipeDirections.length; i++){
+    if (thisRecipeDirections[i] === ''){
+      i++;
+    } else {
+      var thisDirectionsContainer = $('<p>').text(thisRecipeDirections[i]);
+      thisDirectionsContainer.appendTo('#savedFoodList');
+    }
+  };
 }); //END FULL SAVED RECIPE DISPLAY FUNCTION
 
 function renderIng(mealObj, nPicCon) {
@@ -272,13 +279,23 @@ function renderIng(mealObj, nPicCon) {
 function renderInst(mealObj, iuiList, nPicCon) {
   // Display Instruction on the right
   var instructionsWrapper = $('<div>').attr('class', 'seven wide column pusher');
-  var fInst = $("<p>").text(mealObj.mInst);
+  instructionsWrapper.append(iuiList);
 
+  //For loop to extract the directions from the array
+  for (var i = 0; i < (mealObj.mInst).length; i++){
+    if (mealObj.mInst[i] === ''){
+      i++
+    } else {
+      var fInst = $("<p>").text(mealObj.mInst[i]);
+      instructionsWrapper.append(fInst);
+    }
+  }
+  
   //var ingInstCon = $("<div>").append(iuiList,instC).addClass("seven wide column row");
   //var mContainer = $("<div>").append(nPicCon, ingInstCon).addClass("three column row");
   //var mContainer = $("<div>").append(nPicCon, iuiList,instC).addClass("three column row");
 
-  instructionsWrapper.append(iuiList, fInst);
+  
   var mContainer = $("<div>")
     .append(nPicCon, instructionsWrapper)
     .addClass("three column row")
