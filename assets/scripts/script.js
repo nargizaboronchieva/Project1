@@ -123,7 +123,7 @@ function processDrinksData(drinks) {
     //take out image and title of a single drink
     var drinkImage = drink.strDrinkThumb;
     var drinkTitle = drink.strDrink;
-    var drinkInstructions = drink.strInstructions;
+    var drinkInstructions = (drink.strInstructions).split('\r\n');
     //retrieve ingredients and directions for the drink object array
     var thisDrinkIngredientsArray = [];
     for (var j = 1; j < 16; j++) {
@@ -260,8 +260,6 @@ function displayDrink(drinkIndex) {
       } //end If Condition
       
     })
-
-
     var thisDrinkImage = $('<img>').attr({src: drinkImage, class: 'ui fluid image rounded'}).css('float', 'left');
     thisDrinkImage.appendTo(thisRecipeContainer);
 //5. Ingredient loop
@@ -281,10 +279,17 @@ function displayDrink(drinkIndex) {
       }
    }
 
-//6. Add directions below ingredients list
+//6. Directions loop
+    //Loop through the directions and append to instructions container
     var drinkInstructions = selectedDrink.directions;
-    var thisDrinkInstructions = $('<p>').text(drinkInstructions);
-    thisDrinkInstructions.appendTo(outerInstructionsContainer);
+    for (var i = 0; i < drinkInstructions.length; i++) {
+      if (drinkInstructions[i] === ''){
+        i++;
+      } else {
+        var thisDrinkInstructions = $('<p>').text(drinkInstructions[i]);
+        thisDrinkInstructions.appendTo(outerInstructionsContainer);
+      }
+    }
    }
 
 //LOCAL STORAGE DISPLAY:
@@ -371,8 +376,16 @@ $('#savedDrinkList').click(function (event) {
     thisDrinkIngredientRow.appendTo(thisDrinkIngredientList);
     console.log('Drink ngredient ' + i + ' was added to the list.');
   };
-  //6. Append the directions container to the page
-  var thisDrinkDirectionsContainer = $('<p>').text(thisDrinkID.directions);
-  thisDrinkDirectionsContainer.appendTo('#savedDrinkList');
+  //6. Directions loop
+    //Loop through the directions and append to instructions container
+    var savedDrinkInstructions = thisDrinkID.directions;
+    for (var i = 0; i < savedDrinkInstructions.length; i++) {
+      if (savedDrinkInstructions[i] === ''){
+        i++;
+      } else {
+        var thisDrinkDirectionsContainer = $('<p>').text(savedDrinkInstructions[i]);
+        thisDrinkDirectionsContainer.appendTo('#savedDrinkList');
+      }
+    }
 });
 
