@@ -38,10 +38,12 @@ $('.glassItem').on('click', function (e) {
 
             }
         });
+
 });
 
 
 var createRandomDrink = (drinks) => {
+    $('randomDrinkResult').empty();
     var ingredients = [];
     // Get all ingredients from the object. Up to 15
     for (let i = 1; i <= 15; i++) {
@@ -51,56 +53,53 @@ var createRandomDrink = (drinks) => {
             // Stop if no more ingredients
             break;
         }
+        // $('.ui.modal').modal('show');
+        // console.log('Previous modal content has been cleared.');
         document.getElementById("homePage").style.display = "block";
         document.getElementById("foodPage").style.display = "none";
         document.getElementById("drinkPage").style.display = "none";
         document.getElementById("userPage").style.display = "none";
-        document.getElementById("headingStyle").style.display = "none";
+        //document.getElementById("headingStyle").style.display = "none";
         // document.getElementById("moodText").style.display = "none";
         // document.getElementById("glassContainer").style.display = "none";
     }
+        console.log('Program has arrived at the start of card creation');
+            //2. Empty container
+        $('#randomDrinkResult').empty();
 
-    var newInnerHTML = `
-		<div class="row">
-			<div>
-				<img src="${drinks.strDrinkThumb}" alt="drinks Image">
-                <h1 style="font-size:45px">
-                     ${drinks.strDrink}
-                </h1>
-                ${drinks.strCategory ? `
-                <p style="font-size:20px">
-                    <strong>
-                         Category:
-                    </strong>
-                 ${drinks.strCategory}
-                 </p>` : ''}
-                ${drinks.strGlass ? `
-                <p style="font-size:20px">
-                    <strong>
-                         Glass Type:
-                    </strong>
-                 ${drinks.strGlass}
-                 </p>` : ''}
-                <h5 style="font-size:20px">
-                     <strong>
-                        Ingredients:
-                    </strong>
-                </h5>
-                <ul 
-                    style="line-height: 3em">
-                    ${ingredients.map(ingredient =>
-                         `<li>
-                             ${ingredient}
-                         </li>`).join('')}
-				</ul>
-			</div>
-			<div>
-				<p style="font-size:25px">${drinks.strInstructions}</p>
-			</div>
-		</div>
-	`;
+        //  Build the recipe card using retrieved data
+        //  Retrieve the drink title
+        var mainDrinkContainer = $('<div>').attr('class', 'sixteen wide column');
+        mainDrinkContainer.appendTo('#randomDrinkResult');
+        var currentDrinkTitle = $('<h2>').text(drinks.strDrink);
+        currentDrinkTitle.appendTo(mainDrinkContainer);
+        //  Retrieve the drink photo
+        var currentDrinkImage = $('<img>').attr({ src: drinks.strDrinkThumb, class: 'ui rounded image' });
+        currentDrinkImage.appendTo(mainDrinkContainer);
+        //  Retrieve the drink directions
+        //  Ingredients retrieval part 1: Cycle through ingredients array and create ingredient list  
+        var thisDrinkIngredientList = $("<div>").text(thisDrinkIngredientContent).addClass("ui celled unordered list");
+        thisDrinkIngredientList.appendTo('#randomDrinkResult');
+        for (var i = 0; i < ingredients.length; i++) {
+            var thisDrinkIngredientContent = ingredients[i];
+                console.log('The ingredient ' + i + ' = ' + thisDrinkIngredientContent);
+            //Ingredients retrieval Part 2: For each looped ingredient, create and append an ingredient row.
+            var thisDrinkIngredientRow = $("<div>").text(thisDrinkIngredientContent).addClass("item");
+            thisDrinkIngredientRow.appendTo(thisDrinkIngredientList);
+            console.log('Drink ingredient ' + i + ' was added to the list.');
+        };
+        //6. Append the directions container to the page
+        var thisDrinkDirectionsContainer = $('<p>').text(drinks.strInstructions);
+        thisDrinkDirectionsContainer.appendTo('#randomDrinkResult');
 
-    getRandomDrinkContainer.innerHTML = newInnerHTML;
+        //7. Add button to clear randomDrinkResults container
+        var clearButtonDiv = $('<div>').attr('class', 'actions');
+        clearButtonDiv.appendTo('#randomDrinkResult');
+        var clearButton = $('<button>').attr('class', 'ui pink basic button').text('Clear');
+        clearButton.click(function(){
+            $('#randomDrinkResult').empty();
+        });
+        clearButton.appendTo(clearButtonDiv);
+            console.log('Program has arrived at the end of card creation');
+
 }
-
-
