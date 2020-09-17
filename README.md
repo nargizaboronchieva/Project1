@@ -7,9 +7,6 @@ https://nargizaboronchieva.github.io/Project1/
 
 
 
-## Desktop 
-![Desktop](assets/readMeImages/deployedDemo.gif)
-
 ## Built With
  [Semantic Ui](https://semantic-ui.com/)
 
